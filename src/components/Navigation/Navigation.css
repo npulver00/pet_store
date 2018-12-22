@@ -1,0 +1,60 @@
+.navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0% auto;
+    background-color: teal;
+    width: 100%;
+    height: 110px;
+    position: fixed;
+ 
+ 
+    
+}
+.navlinks{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: space-between;
+    flex-direction: row;
+    /* background-color: black; */
+    width: 90%;
+    height: 80px; 
+    overflow: hidden;
+
+}
+.navlinks button{
+    background-color: rgb(240, 240, 240);
+    text-decoration: none;
+    margin: 15px;
+    width: 60%;
+}
+.login{
+    display: flex;
+    justify-content: flex-end;
+    align-content: flex-end;
+    flex-direction: row;
+    /* background-color: green; */
+    width: 20%;
+}
+.login button{
+    display: flex;
+    justify-content: flex-end;
+    justify-items: flex-end;
+    width: 20%;
+    
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    background-image: url("../Image/logo1.png");
+    background-position: center; 
+    background-size:contain; 
+    width: 7%;
+    height: 110%;
+    margin: 0% auto;
+   
+   
+}

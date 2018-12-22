@@ -1,25 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import './Reset.css';
+import Navigation from './components/Navigation/Navigation';
+import Landingpage from './components/Landingpage/Landingpage';
+import Login from './components/Login/Login';
+import Footer from './components/Footer/Footer';
+import Products from './components/Products/Products';
+import Cart from './components/Cart/Cart';
+import {Switch, Route} from "react-router-dom";
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Navigation/>
+       <Switch>
+         <Route path="/cart" component={Cart}/>
+         <Route path="/products" component={Products} />
+         <Route path="/" component={Landingpage}/> 
+       </Switch>
+       
+
+
+
+
+
+      
+       
+      
+       {/* <div><Footer/></div> */}
       </div>
     );
   }
