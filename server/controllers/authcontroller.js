@@ -4,7 +4,7 @@ module.exports={
 
         login: (req, res)=>{
             const{code} = req.query;
-            console("Login Code query", code);
+            console.log("Login Code query", code);
             const payload ={
                 client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
             client_secret: process.env.AUTH0_CLIENT_SECRET,

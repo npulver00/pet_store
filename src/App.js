@@ -15,11 +15,13 @@ class App extends Component {
     return (
       <div className="App">
         <Navigation/>
+        <Login/>
        <Switch>
          <Route path="/cart" component={Cart}/>
          <Route path="/products" component={Products} />
          <Route path="/" component={Landingpage}/> 
        </Switch>
+
        
 
 

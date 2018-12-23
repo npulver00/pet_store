@@ -58,3 +58,9 @@
    
    
 }
+.userpicture{
+    width: 50px;
+    border-radius: 50%;
+    border: 2px black;
+    padding: 10px;
+}
