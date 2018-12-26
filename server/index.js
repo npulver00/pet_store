@@ -4,6 +4,7 @@ const massive = require("massive");
 const session = require("express-session");
 require("dotenv").config();
 const authcontroller = require("./controllers/authcontroller");
+const controller = require("./controllers/controller");
 
 //add connect-pg simple???
 
@@ -28,6 +29,10 @@ massive(process.env.CONNECTION_STRING).then(database=>{
 app.get('/auth/callback', authcontroller.login);
 app.get('/auth/user-data', authcontroller.getUser);
 app.post('/auth/logout', authcontroller.logout);
+
+//Endpoints for Products
+
+app.get('/store/pets', controller.getProducts);
 
 
 
