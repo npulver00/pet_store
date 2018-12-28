@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+
 import './Products.css';
 
 class Products extends Component {
@@ -28,7 +28,7 @@ class Products extends Component {
 
 
     render() { 
-        const{productList}= this.state;
+        // const{productList}= this.state;
         return (
             <div className="productpage">
                 {/* {productList.map(product=>{

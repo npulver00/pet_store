@@ -17,11 +17,11 @@ export default class Landingpage extends Component {
     
     fetchProducts=()=>{
         axios.get('/store/pets').then(response=>{
-            console.log("response", response)
+            // console.log("response", response)
             this.setState({
                 productList: response.data
             })
-            console.log("responsedata", response.data)
+            // console.log("responsedata", response.data)
         })
     }
 
@@ -37,13 +37,14 @@ export default class Landingpage extends Component {
                 <div className="product">   
                   {productList.map(product=>{
                     // console.log("product", product)
-                    return <div className="productBox">
-                        <img src={product.image}/>
+                    return ( <div className="productBox">
+                        <img  src={product.image} alt="productimage"/>
                         <div>{product.name}</div>
                         <div>${product.price}</div>
+                        <div><button>Add to Cart</button></div>
                         
                         </div>
-                })}
+                  )})}
                 
 
 

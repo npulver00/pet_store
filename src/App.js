@@ -4,7 +4,7 @@ import './Reset.css';
 import Navigation from './components/Navigation/Navigation';
 import Landingpage from './components/Landingpage/Landingpage';
 import Login from './components/Login/Login';
-import Footer from './components/Footer/Footer';
+// import Footer from './components/Footer/Footer';
 import Products from './components/Products/Products';
 import Cart from './components/Cart/Cart';
 import {Switch, Route} from "react-router-dom";

@@ -11,7 +11,10 @@ class Cart extends Component {
         return ( 
 
             <div className="cart">
-                   Cart
+                 <div>item</div>
+                 <div>price</div>
+                 <div>quantity</div>
+
             </div>
          );
     }

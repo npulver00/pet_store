@@ -40,7 +40,7 @@ export default class Navigation extends Component{
             <div className="logo"/>
     
             <div className="login"><button onClick={this.login}>Login</button></div>
-            <img className="userpicture" src={this.state.user? this.state.user.picture: ""}/>
+            <img className="userpicture" key="picture"  src={this.state.user? this.state.user.picture: "" }/>
             <div className="user"> {this.state.user ? this.state.user.name : ""} </div>
             </div>
         </div>

@@ -33,7 +33,9 @@ app.post('/auth/logout', authcontroller.logout);
 //Endpoints for Products
 
 app.get('/store/pets', controller.getProducts);
-
+app.post('/store/pets', controller.postToCart)
+app.delete('/store/pets/:id', controller.deleteProduct)
+app.put('/store/pets/:id', controller.editProduct)
 
 
 
