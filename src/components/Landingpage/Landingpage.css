@@ -1,16 +1,23 @@
+body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  
+}
+
 .landingpage {
   display: flex;
-  justify-content: space-evenly;
   flex-direction: column;
   justify-items: center;
   margin: 0% auto;
-  max-width: 80%;
-  padding: 10px;
+  width: 800px;
+  background-color: rgb(220, 224, 224);
+  
 }
 
 .title {
-  margin: 10%;
-  padding: 10%;
+  margin: 15%;
+  padding: 2%;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -23,26 +30,32 @@
 
 .product {
   display: flex;
-  justify-content: space-around;
-  justify-items: center;
-  align-items: center;
-  align-content: center;
+  flex: 1;
+  flex-wrap: wrap;
   flex-direction: row;
+}
+
+.productBox {
   padding: 10px;
-  /* background-color: blue; */
-  height: 50px;
-}
-
-.product span {
-  margin: 0% auto;
-
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-content: center;
+  width: 300px;
   align-items: center;
-  border: solid black;
-  width: 200px;
-  height: 200px;
-  /* background-color: blueviolet;   */
+  text-align: center;
+  margin: 0% auto;
+  
+  
 }
+.productBox div {
+  margin: 2px;
+  padding: 3px;
+  font-size: 15px;
+  font-weight: 700px;
+  /* background-color: green; */
+  
+  
+}
+.productBox img{
+  width: 200px;
+  border-radius: 10px;
+  
+}
+

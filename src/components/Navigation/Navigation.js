@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import {NavLink} from "react-router-dom";
 import "./Navigation.css";
 import axios from 'axios';
+import {setUser} from "../../redux/reducer";
+import {connect} from "react-redux";
 
 
-
-
-export default class Navigation extends Component{
+class Navigation extends Component{
     constructor(props) {
         super(props);
         this.state = { 
@@ -15,9 +15,10 @@ export default class Navigation extends Component{
     }
     componentDidMount(){
         axios.get("/auth/user-data").then(response=>{
-            this.setState({
-                user:response.data.user
-            })
+            this.props.setUser(response.data.user);
+            // this.setState({
+            //     user:response.data.user
+            // })
         });
     }
 
@@ -40,11 +41,19 @@ export default class Navigation extends Component{
             <div className="logo"/>
     
             <div className="login"><button onClick={this.login}>Login</button></div>
-            <img className="userpicture" key="picture"  src={this.state.user? this.state.user.picture: "" }/>
-            <div className="user"> {this.state.user ? this.state.user.name : ""} </div>
+            <img className="userpicture" key="picture"  src={this.props.user? this.props.user.picture: "" }/>
+            <div className="user"> {this.props.user ? this.props.user.name : ""} </div>
             </div>
         </div>
      );
     }
 }
- 
+const mapStateToProps = state => {
+    return{
+        user: state.user
+    }
+
+}
+
+export default connect(mapStateToProps, {setUser})(Navigation);
+

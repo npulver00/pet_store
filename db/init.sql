@@ -16,6 +16,14 @@ create table if not exists products(
     species text,
     category text
 )
+
+create table if not exists cart_items(
+    id serial,
+    user_id integer,
+    product_id integer,
+    quantity integer
+)
+
 insert into products(name, price, image, species, category)
 values('Authority Grain Free Adult Dog Food-Chicken & Pea', 10.99, 'https://s7d2.scene7.com/is/image/PetSmart/AuthorityPackagingUpdates_BrandShop_0002_5221181_5279180_DryDog?$PB1001$', 'Dog', 'food' )
 
@@ -52,3 +60,4 @@ values('Kong Refillables Beaver Cat Toy-Catnip', 2.69, 'https://s7d2.scene7.com/
 
 insert into products(name, price, image, species, category)
 values('Great Choice Feather Tailed Mouse Teaser Cat Toy', 4.99, 'https://s7d2.scene7.com/is/image/PetSmart/5193711?$sclp-prd-main_small$', 'Cat', 'toys' )
+;
