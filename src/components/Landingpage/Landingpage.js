@@ -3,7 +3,7 @@ import "./Landingpage.css";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { allProducts, removeCart, addCart } from "../../redux/reducer";
+import { allProducts, removeCart, addCart,setUser } from "../../redux/reducer";
 
 class Landingpage extends Component {
   constructor(props) {
@@ -26,23 +26,20 @@ class Landingpage extends Component {
       // console.log("responsedata", response.data)
     });
   };
-  postProductToCart = () => {
-    const { image, name, price } = this.state;
-    const postItem = {
-      image,
-      name,
-      price
-    };
-    axios.post("/store/pets", postItem).then(response => {
+  postProductToCart = (id) => {
+    axios.post("/store/cart", {id}).then(response => {
       console.log("response Post", response);
       console.log("response Post Data", response.data);
       this.props.addCart(response.data);
+      
     });
+  
   };
   // removeCart
 
   render() {
     const { productList } = this.props;
+    // const {cart}= this.props.user;
 
     const listItems = productList.map(product => {
       return (
@@ -54,18 +51,19 @@ class Landingpage extends Component {
           </div>
           <div>{product.name}</div>
           <div>${product.price}</div>
-          <div className="flipcardback">
-            <p> Hello</p>
-          </div>
-          <NavLink to="/">
-            {" "}
-            <div>
-              <button onClick={() => {this.postProductToCart();
+          <button onClick={() => {this.postProductToCart(product.id);
                 }}>
                 Add to Cart
               </button>
+          <div className="flipcardback">
+            <p> Hello</p>
+          </div>
+          {/* <NavLink to="/"> */}
+            {" "}
+            <div>
             </div>
-          </NavLink>
+          {/* </NavLink> */}
+         
         </div>
       );
     });
@@ -75,19 +73,24 @@ class Landingpage extends Component {
           <h1>Stella & Toby Pet World</h1>
         </div>
         <div className="product">{listItems}</div>
+        
+        <div></div>
+
+        
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  const { productList, cart } = state;
+  const { productList } = state;
   return {
     productList,
-    cart
+    
+  
   };
 };
 export default connect(
   mapStateToProps,
-  { allProducts, removeCart, addCart }
+  { allProducts, removeCart, addCart, setUser }
 )(Landingpage);

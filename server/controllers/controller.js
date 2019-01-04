@@ -16,13 +16,14 @@ module.exports={
         const db = req.app.get("db");
         db.post_Cart({
             id,
-            image,
-            name,
-            price,
+           
         }).then(productCart=>{
             console.log("1stproductCart", productCart)
             const producttoCart = productCart[0]
-            console.log("productCart", productCart)
+            // console.log("productCart", productCart)
+            req.session.user.cart = productCart
+            console.log("req.session", req.session.user)
+
             res.status(200).json(producttoCart)
         }).catch(error=>{
             console.log("error in postToCart", error)

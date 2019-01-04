@@ -5,6 +5,7 @@ const session = require("express-session");
 require("dotenv").config();
 const authcontroller = require("./controllers/authcontroller");
 const controller = require("./controllers/controller");
+const cart_controller = require("./controllers/cart_controller");
 
 //add connect-pg simple???
 
@@ -33,9 +34,13 @@ app.post('/auth/logout', authcontroller.logout);
 //Endpoints for Products
 
 app.get('/store/pets', controller.getProducts);
-app.post('/store/pets', controller.postToCart)
-app.delete('/store/pets/:id', controller.deleteProduct)
-app.put('/store/pets/:id', controller.editProduct)
+
+
+
+//Endpoint for Cart 
+app.post('/store/cart', cart_controller.postToCartAdd)
+// app.delete('/store/cart/:id', cart_controller.deleteProduct)
+// app.put('/store/cart/:id', cart_controller.editProduct)
 
 
 

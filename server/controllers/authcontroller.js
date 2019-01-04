@@ -59,7 +59,7 @@ module.exports={
     },
 
         getUser: (req, res)=>{
-            res.json({ user: req.session.user });
+            res.json({ user: req.session.user, cart:req.session.cart});
         },
 
         logout: (req, res)=>{

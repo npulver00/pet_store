@@ -59,6 +59,7 @@ body{
   text-align: center;
   margin: 0% auto;
   perspective: 1000px;
+  padding: 5px;
   
   
   
@@ -81,6 +82,7 @@ body{
   width: 60%;
   height: 60%;
   backface-visibility: hidden;
+  
   /* border: solid black 2px; */
 
 }
@@ -89,7 +91,9 @@ body{
   /* height: 10px; */
   width: 200px;
   color: black;
-  z-index: 2;
+  z-index: 1;
+  
+
 }
 .flipcardback{
    /* background-color: grey; */
@@ -102,13 +106,14 @@ body{
 }
 .productBox div {
   margin: 0% auto;
-  margin-top: 2px;
-  margin-bottom: 2px;
+  /* margin-top: 2px;
+  margin-bottom: 3px; */
 
   /* padding: 4px; */
   font-size: 15px;
   font-weight: 700px;
-  /* background-color: green; */
+  /* background-color: rgb(233, 220, 220); */
+
   
   
 }
@@ -122,8 +127,12 @@ body{
     
 }
 .productBox button{
-  margin-top: 55px;
+  margin-top: 10px;
    border-radius: 10px;
+    /* position: absolute;
+   z-index: 9999; */
+   
+ 
 
 }
 

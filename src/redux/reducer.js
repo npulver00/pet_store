@@ -1,7 +1,7 @@
 const INITIALSTATE = {
     productList: [],
     user: null,
-    cart: []
+    
     
 };
 
@@ -18,7 +18,7 @@ function reducer(state=INITIALSTATE, action){
         case SET_USER:
             return Object.assign({}, state, {user:action.payload});
         case ADD_CART:
-            return Object.assign({},state, {cart:action.payload});
+            return Object.assign({},state, {user:action.payload});
         case REMOVE_CART:
             const firstMatchIndex= state.indexOf(action.payload)
             return state.filter((item, index)=>index !== firstMatchIndex)
@@ -46,10 +46,10 @@ function removeCart(item){
         payload: item
     }
 }
-function addCart(item){
+function addCart(id){
     return{
         type: ADD_CART,
-        payload: item
+        payload: id
     }
 }
 export default reducer;
