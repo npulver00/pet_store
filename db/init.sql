@@ -10,7 +10,7 @@ create table if not exists users(
 
 create table if not exists products(
     id serial,
-    name varchar(50) not null,
+    name varchar(80),
     price decimal,
     image text,
     species text,

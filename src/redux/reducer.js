@@ -2,6 +2,7 @@ const INITIALSTATE = {
     productList: [],
     user: null,
     cart: []
+    
 };
 
 const ALL_PRODUCTS = "ALL_PRODUCTS";
@@ -17,7 +18,7 @@ function reducer(state=INITIALSTATE, action){
         case SET_USER:
             return Object.assign({}, state, {user:action.payload});
         case ADD_CART:
-            return [...state, action.payload];
+            return Object.assign({},state, {cart:action.payload});
         case REMOVE_CART:
             const firstMatchIndex= state.indexOf(action.payload)
             return state.filter((item, index)=>index !== firstMatchIndex)

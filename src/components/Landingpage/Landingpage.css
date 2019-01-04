@@ -2,6 +2,9 @@ body{
   margin: 0;
   padding: 0;
   width: 100%;
+  background-color:rgb(240, 240, 240);
+
+  
   
 }
 
@@ -11,7 +14,13 @@ body{
   justify-items: center;
   margin: 0% auto;
   width: 800px;
-  background-color: rgb(220, 224, 224);
+  background-color: white;
+  border: solid black 1px;
+  /* background-color: rgb(240, 240, 240); */
+
+
+
+ 
   
 }
 
@@ -25,7 +34,7 @@ body{
   font-family: "Pacifico", cursive;
   font-size: 45px;
   position: relative sticky;
-  overflow: cover;
+ 
 }
 
 .product {
@@ -33,20 +42,70 @@ body{
   flex: 1;
   flex-wrap: wrap;
   flex-direction: row;
+  position: relative sticky;
+  padding: 5px;
+  
+
+
 }
 
+
 .productBox {
-  padding: 10px;
+  /* position: relative; */
+ 
   width: 300px;
+  height: 300px;
   align-items: center;
   text-align: center;
   margin: 0% auto;
+  perspective: 1000px;
+  
   
   
 }
+.flipinnerbox{
+  position: relative;
+  width: 70%;
+  height: 70%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.productBox:hover .flipinnerbox{
+  transform: rotateY(180deg);
+}
+.flipcardfront, .flipcardback{
+  position: relative;
+  width: 60%;
+  height: 60%;
+  backface-visibility: hidden;
+  /* border: solid black 2px; */
+
+}
+.flipcardfront{
+
+  /* height: 10px; */
+  width: 200px;
+  color: black;
+  z-index: 2;
+}
+.flipcardback{
+   /* background-color: grey; */
+   width: 200px;
+   margin: 20px;
+   padding-top: 80px;
+  
+   transform: rotateY(360deg);
+  z-index: 1; 
+}
 .productBox div {
-  margin: 2px;
-  padding: 3px;
+  margin: 0% auto;
+  margin-top: 2px;
+  margin-bottom: 2px;
+
+  /* padding: 4px; */
   font-size: 15px;
   font-weight: 700px;
   /* background-color: green; */
@@ -54,8 +113,22 @@ body{
   
 }
 .productBox img{
+
+
   width: 200px;
-  border-radius: 10px;
-  
+ 
+
+
+    
 }
+.productBox button{
+  margin-top: 55px;
+   border-radius: 10px;
+
+}
+
+/* .productBox img:hover{
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
+} */
 
