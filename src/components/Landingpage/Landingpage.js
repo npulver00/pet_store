@@ -3,7 +3,7 @@ import "./Landingpage.css";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { allProducts, removeCart, addCart,setUser } from "../../redux/reducer";
+import { allProducts, removeCart, addCart, setUser } from "../../redux/reducer";
 
 class Landingpage extends Component {
   constructor(props) {
@@ -26,14 +26,12 @@ class Landingpage extends Component {
       // console.log("responsedata", response.data)
     });
   };
-  postProductToCart = (id) => {
-    axios.post("/store/cart", {id}).then(response => {
+  postProductToCart = id => {
+    axios.post("/store/cart", { id }).then(response => {
       console.log("response Post", response);
       console.log("response Post Data", response.data);
       this.props.addCart(response.data);
-      
     });
-  
   };
   // removeCart
 
@@ -41,42 +39,40 @@ class Landingpage extends Component {
     const { productList } = this.props;
     // const {cart}= this.props.user;
 
-    const listItems = productList.map(product => {
+    console.log("productlist",productList)
+    const listItems = this.props.productList.length ? this.props.productList.map(product => {
       return (
         <div className="productBox">
           <div className="flipinnerbox">
-          <div className="flipcardfront">
-            <img src={product.image} alt="productimage" />
+            <div className="flipcardfront">
+              <img src={product.image} alt="productimage" />
             </div>
           </div>
           <div>{product.name}</div>
           <div>${product.price}</div>
-          <button onClick={() => {this.postProductToCart(product.id);
-                }}>
-                Add to Cart
-              </button>
+          <button
+            onClick={() => {
+              this.postProductToCart(product.id);
+            }}
+          >
+            Add to Cart
+          </button>
           <div className="flipcardback">
-            <p> Hello</p>
+            <p>Hello</p>
           </div>
-          {/* <NavLink to="/"> */}
-            {" "}
-            <div>
-            </div>
+          {/* <NavLink to="/"> */} <div />
           {/* </NavLink> */}
-         
         </div>
       );
-    });
+    }) : "loading"
     return (
       <div className="landingpage">
         <div className="title">
           <h1>Stella & Toby Pet World</h1>
         </div>
         <div className="product">{listItems}</div>
-        
-        <div></div>
 
-        
+        <div />
       </div>
     );
   }
@@ -85,9 +81,7 @@ class Landingpage extends Component {
 const mapStateToProps = state => {
   const { productList } = state;
   return {
-    productList,
-    
-  
+    productList
   };
 };
 export default connect(

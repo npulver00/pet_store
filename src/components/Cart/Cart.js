@@ -15,10 +15,11 @@ class Cart extends Component {
            const{cart}= this.props.user
         const cartItems = this.props.user.cart.map(item=>{
             return(
-                <div>
+                <div className="cartCard">
                 <div><img src={item.image} alt="photo"/></div>
-                <div>{item.name}</div>
-                <div>{item.price}</div>
+                <div>Name:{item.name}</div>
+                <div>Quantity</div>
+                <div>Price:{item.price}</div>
                 </div>
             )
         })

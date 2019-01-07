@@ -3,20 +3,32 @@
     width: 100%;
     height: 100vh;
     display: flex;
-    padding: 200px;
+    justify-content: center;
+    flex-direction: column;
    
 }
-.cart > div{
+.cartCard{
+    background-color: yellow;
+    width: 50%;
     display: flex;
     justify-content: center;
-    align-content: flex-start;
-    align-items: flex-start;
     flex-direction: row;
-    width: 20px;
-    height: 300px;
-    
+    border: solid 2px green;
 
-    margin: 0% auto;
- 
+}
 
+.cartCard > div{
+    /* background-color: green; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+    flex-direction: row;
+    width: 70%;
+    height: 25%;
+    margin: 10px;
+    text-align: center;
+    padding: 5px;
+    text-align: center;
+    letter-spacing: 1px;
 }

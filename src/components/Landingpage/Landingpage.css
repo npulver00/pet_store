@@ -3,6 +3,8 @@ body{
   padding: 0;
   width: 100%;
   background-color:rgb(240, 240, 240);
+  
+
 
   
   
@@ -16,6 +18,7 @@ body{
   width: 800px;
   background-color: white;
   border: solid black 1px;
+  letter-spacing: 1px;
   /* background-color: rgb(240, 240, 240); */
 
 

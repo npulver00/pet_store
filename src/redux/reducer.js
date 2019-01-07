@@ -1,8 +1,6 @@
 const INITIALSTATE = {
     productList: [],
     user: null,
-    
-    
 };
 
 const ALL_PRODUCTS = "ALL_PRODUCTS";
