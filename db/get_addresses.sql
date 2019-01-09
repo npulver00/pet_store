@@ -1,1 +1,1 @@
-select * from shipping_address;
+select * from shipping_address where auth0_id = ${auth0_id}

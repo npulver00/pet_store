@@ -41,17 +41,17 @@ module.exports={
         // })
     },
     editProduct: (req, res)=>{
-        const{id}=req.params;
-        const{name}=req.body;
-        const db = req.app.get("db");
-        db.editAProduct({
-            id:id,
-            name:name,
-        }).then(()=>{
-            res.status(200).json()
-        }).catch(error=>{
-            console.log("error in editProduct", error)
-        })                  
+        // const{id}=req.params;
+        // const{name}=req.body;
+        // const db = req.app.get("db");
+        // db.editAProduct({
+        //     id:id,
+        //     name:name,
+        // }).then(()=>{
+        //     res.status(200).json()
+        // }).catch(error=>{
+        //     console.log("error in editProduct", error)
+        // })                  
      },
 
 
