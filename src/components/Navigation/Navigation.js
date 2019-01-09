@@ -40,7 +40,7 @@ class Navigation extends Component{
     return ( 
         <div className="navbar">
             <div className="navlinks">
-            <div><NavLink to= "/" activeClassName="active"><button>Home</button></NavLink></div>
+            <div><NavLink activeClassName="active" exact to= "/" ><button>Home</button></NavLink></div>
             <div><NavLink to="/products"><button>Dogs</button></NavLink></div>
             <div><NavLink to="/products"><button>Cats</button></NavLink></div>
             <div><NavLink to="cart"><button>Cart</button></NavLink></div>

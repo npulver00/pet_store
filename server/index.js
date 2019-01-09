@@ -42,7 +42,10 @@ massive(process.env.CONNECTION_STRING)
   
   //Endpoint for Cart
   app.post("/store/cart", cart_controller.postToCartAdd);
-  // app.delete('/store/cart/:id', cart_controller.deleteProduct)
+  app.delete('/store/cart/:id', cart_controller.deleteFromCart);
+  app.get('/session/cart', cart_controller.getProductsInCart)
+  app.post('/cart/address', cart_controller.postFormToCart)
+  app.get('/store/addresshistory', cart_controller.getAddressHistory)
   // app.put('/store/cart/:id', cart_controller.editProduct)
   
   app.use( express.static( `${__dirname}/../build` ) );

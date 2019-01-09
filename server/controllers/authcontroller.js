@@ -4,13 +4,17 @@ module.exports = {
   login: (req, res) => {
     const { code } = req.query;
     console.log("Login Code query", code);
+    let redirect_uri =
+    process.env.HOST == "localhost"
+    ?`http://${req.headers.host}/auth/callback`
+    :`https://${req.headers.host}/auth/callback`
     const payload = {
       client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
       client_secret: process.env.AUTH0_CLIENT_SECRET,
       code,
       grant_type: "authorization_code",
-      redirect_uri: `https://${req.headers.host}/auth/callback`
-    };
+      redirect_uri
+    };   
 
     function tradeCodeForAccessToken() {
       return axios.post(

@@ -30,15 +30,15 @@ module.exports={
         })
     },
     deleteProduct: (req, res)=>{
-        const{id}= req.params
-        const db = req.app.get("db");
-        db.deleteAProduct([
-            id
-        ]).then(removeProduct=>{
-            res.json(removeProduct)
-        }).catch(error=>{
-            console.log("error in deleteProduct", error)
-        })
+        // const{id}= req.params
+        // const db = req.app.get("db");
+        // db.deleteAProduct([
+        //     id
+        // ]).then(removeProduct=>{
+        //     res.json(removeProduct)
+        // }).catch(error=>{
+        //     console.log("error in deleteProduct", error)
+        // })
     },
     editProduct: (req, res)=>{
         const{id}=req.params;

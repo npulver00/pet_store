@@ -16,6 +16,15 @@ create table if not exists products(
     species text,
     category text
 )
+create table if not exists shipping_address(
+    id serial,
+    auth0_id text,
+    name text,
+    address text,
+    city text,
+    state text,
+    zip integer
+)
 
 create table if not exists cart_items(
     id serial,
