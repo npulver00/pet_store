@@ -15,10 +15,12 @@ class Navigation extends Component{
     }
     componentDidMount(){
         axios.get("/auth/user-data").then(response=>{
-            this.props.setUser(response.data.user);
+            // console.log("response in Navigation", response)
+            this.props.setUser(response.data);
             // this.setState({
             //     user:response.data.user
             // })
+            // console.log(" response.data in Navigation", this.props.setUser(response.data))
         });
     }
 
@@ -37,6 +39,7 @@ class Navigation extends Component{
 
 
     render(){
+        // console.log("this.props.user",this.props.user)
     return ( 
         <div className="navbar">
             <div className="navlinks">

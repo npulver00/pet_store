@@ -38,6 +38,7 @@ function allProducts(items){
 }
 
 function setUser(user){
+    // console.log("user", user)
     return{
         type: SET_USER,
         payload:user

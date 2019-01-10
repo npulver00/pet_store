@@ -15,7 +15,8 @@ class AddressFiles extends Component {
       state: "",
       zip: "",
       name: "",
-      isHidden: false
+      isHidden: false,
+
     };
   }
   componentDidMount() {
@@ -31,23 +32,18 @@ class AddressFiles extends Component {
     });
   };
   editAddress = id => {
-    const { name } = this.props.user;
-    const { address, city, state, zip } = this.state;
-    const { inputAddress } = this.props;
-    const edituserAddress = {
-      address,
-      city,
-      state,
-      zip,
-      name
-    };
+    const { addresses } = this.state
+
+    const edituserAddress = addresses.find(address => address.id == id)
+    console.log("addresses help", addresses)
     console.log("edituserAddress", edituserAddress);
 
     axios.put(`/store/addresshistory/${id}`, edituserAddress).then(response => {
       console.log("put response.data", response);
-      this.setState({
-        addresses: response.data
-      });
+
+      // this.setState({
+      //   addresses: response.data
+      // });
       this.getUsersAddresses();
     });
   };
@@ -72,11 +68,11 @@ class AddressFiles extends Component {
   submitAddress = () => {
     this.state.isHidden
       ? this.setState({
-          isHidden: false
-        })
+        isHidden: false
+      })
       : this.setState({
-          isHidden: true
-        });
+        isHidden: true
+      });
     console.log(this.state.isHidden);
   };
 
@@ -88,41 +84,41 @@ class AddressFiles extends Component {
         <div className="files">
           {this.state.isHidden ? (
             <div>
-                <div>
-                  <input value={shipping.name} name="name" onChange={e => {
-                      this.handleNestedChange(e, index);
-                    }}/>
-                </div>
-                <div>
-                  <input value={shipping.address} name="address" onChange={e => {
-                      this.handleNestedChange(e, index);
-                    }}/>
-                </div>
-                <div>
-                  <input value={shipping.city} name="city" onChange={e => {
-                      this.handleNestedChange(e, index);
-                    }}/>
-                </div>
-                <div>
-                  <input value={shipping.state} name= "state" onChange={e => {
-                      this.handleNestedChange(e, index);
-                    }}/>
-                </div>
-                <div>
-                  <input value={shipping.zip}name="zip" onChange={e => {
-                      this.handleNestedChange(e, index);
-                    }}/>
-                </div>
+              <div>
+                <input value={shipping.name} name="name" onChange={e => {
+                  this.handleNestedChange(e, index);
+                }} />
+              </div>
+              <div>
+                <input value={shipping.address} name="address" onChange={e => {
+                  this.handleNestedChange(e, index);
+                }} />
+              </div>
+              <div>
+                <input value={shipping.city} name="city" onChange={e => {
+                  this.handleNestedChange(e, index);
+                }} />
+              </div>
+              <div>
+                <input value={shipping.state} name="state" onChange={e => {
+                  this.handleNestedChange(e, index);
+                }} />
+              </div>
+              <div>
+                <input value={shipping.zip} name="zip" onChange={e => {
+                  this.handleNestedChange(e, index);
+                }} />
+              </div>
             </div>
           ) : (
-            <div>
-              <div>{shipping.name}</div>
-              <div>{shipping.address}</div>
-              <div>{shipping.city}</div>
-              <div>{shipping.state}</div>
-              <div>{shipping.zip}</div>
-            </div>
-          )}
+              <div>
+                <div>{shipping.name}</div>
+                <div>{shipping.address}</div>
+                <div>{shipping.city}</div>
+                <div>{shipping.state}</div>
+                <div>{shipping.zip}</div>
+              </div>
+            )}
           <button
             onClick={() => {
               this.editAddress(shipping.id);

@@ -26,11 +26,18 @@ class Landingpage extends Component {
       // console.log("responsedata", response.data)
     });
   };
-  postProductToCart = id => {
-    axios.post("/store/cart", { id }).then(response => {
-      console.log("response Post", response);
-      console.log("response Post Data", response.data);
-      this.props.addCart(response.data);
+  postProductToCart = (product_id) => {
+    const carttoDB = {
+      auth0_id: this.props.user.auth0_id,
+      product_id: product_id
+
+    }
+    console.log("carttoDB", carttoDB, this.props.user)
+
+    axios.post("/store/cart", carttoDB).then(response => {
+      // console.log("response Post", response);
+      // console.log("response Post Data", response.data);
+      console.log('item successfully added to db', response)
     });
   };
   // removeCart
@@ -39,7 +46,7 @@ class Landingpage extends Component {
     const { productList } = this.props;
     // const {cart}= this.props.user;
 
-    console.log("productlist",productList)
+    // console.log("productlist", productList)
     const listItems = this.props.productList.length ? this.props.productList.map(product => {
       return (
         <div className="productBox">
@@ -79,9 +86,10 @@ class Landingpage extends Component {
 }
 
 const mapStateToProps = state => {
-  const { productList } = state;
+  const { productList, user } = state;
   return {
-    productList
+    productList,
+    user
   };
 };
 export default connect(

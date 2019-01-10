@@ -2,11 +2,12 @@
 
 create table if not exists users(
     id serial,
-    name varchar(50) not null,
+    username varchar(50) not null,
     email varchar(50) not null,
     picture text,
-    auth0_id text
+    auth0_id text unique
 );
+
 
 create table if not exists products(
     id serial,
@@ -28,10 +29,16 @@ create table if not exists shipping_address(
 
 create table if not exists cart_items(
     id serial,
-    user_id integer,
+    user_id text,
     product_id integer,
-    quantity integer
+    quantity integer default 1
 )
+select p.name, p.price, p.image, c.quantity
+from products p
+join cart_items c
+on c.product_id = p.id
+join users u
+on  u.auth0_id = c.user_id
 
 insert into products(name, price, image, species, category)
 values('Authority Grain Free Adult Dog Food-Chicken & Pea', 10.99, 'https://s7d2.scene7.com/is/image/PetSmart/AuthorityPackagingUpdates_BrandShop_0002_5221181_5279180_DryDog?$PB1001$', 'Dog', 'food' )

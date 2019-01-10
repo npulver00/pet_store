@@ -65,7 +65,7 @@ module.exports = {
   },
 
   getUser: (req, res) => {
-    res.json({ user: req.session.user, cart: req.session.cart });
+    res.json( req.session.user );
   },
 
   logout: (req, res) => {

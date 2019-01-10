@@ -9,6 +9,7 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: "",
       address: "",
       city: "",
       state: "",
@@ -24,15 +25,18 @@ class Form extends Component {
     });
   };
   postAddress = () => {
-    const { address, city, state, zip } = this.state;
-    const{auth0_id, name}=this.props.user
+    const { name,address, city, state, zip } = this.state;
+    const{auth0_id, username}=this.props.user
     const postnewAddress = {
         address,
         city,
         state,
         zip,
         auth0_id,
-        name
+        username,
+        
+        name,
+      
 
 
     };
@@ -45,13 +49,20 @@ class Form extends Component {
   };
 
   render() {
-      console.log("props", this.props.user)
+      // console.log("props", this.props.user)
     return (
       <div className="form">
         <div>{this.props.user && this.props.user.name}</div>
         <div>
           Shipping Address
-          <div>
+          <div> Name:
+          <input
+                value={this.state.name}
+                name="name"
+                onChange={e => {
+                  this.postInputAddress(e);
+                }}
+              />
             <div>
               {" "}
               Address{" "}
