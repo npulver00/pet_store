@@ -12,9 +12,13 @@ module.exports = {
         })
       } else {
         const productQty = cart[getcartIndex].quantity + 1
+
+        console.log("productQty", productQty)
         const cartId = cart[getcartIndex].cart_id
+        console.log("cardId", cartId)
         db.updateQuantity([productQty, cartId]).then(product => {
           res.status(200).json(product)
+          console.log("product", product)
         })
       }
     });
@@ -26,10 +30,29 @@ module.exports = {
       res.status(200).json(response)
     })
   },
+  // deleteFromCart: (req, res) => {
+  //   const { product_id, quantity } = req.params
+  //   console.log("req.params!", req.params)
+  //   const db = req.app.get("db");
+  //   if (+quantity === 1) {
+  //     db.deleteCart(product_id).then(deleteProduct => {
+  //       console.log("deleteProduct", deleteProduct)
+  //       res.json(deleteProduct);
+  //     })
+  //       .catch(error => {
+  //         console.log("error in deleteAddress", error);
+  //       })
+  //   } else {
+  //     db.updateQuantity(product_id).then(deleteitem => {
+  //       res.status(200).json(deleteitem)
+  //     })
+  //   }
+  // },
   deleteFromCart: (req, res) => {
     const { product_id, quantity } = req.params
     console.log("req.params!", req.params)
     const db = req.app.get("db");
+
     db.deleteCart(product_id).then(deleteProduct => {
       console.log("deleteProduct", deleteProduct)
       res.json(deleteProduct);
@@ -38,6 +61,35 @@ module.exports = {
         console.log("error in deleteAddress", error);
       })
   },
+
+
+  // deleteFromCart: (req, res) => {
+  //   const { product_id } = req.params
+  //   const { auth0_id } = req.body
+
+  //   console.log("req.params!", req.params)
+  //   const db = req.app.get("db");
+  //   db.delete_productstocart(auth0_id).then(deleteProduct => {
+  //     console.log("1st Delete", deleteProduct)
+  //     const deleteoneitem = deleteProduct.findIndex(oneproduct => {
+  //       console.log("2nd Delete", deleteoneitem)
+  //       return product_id === oneproduct.product_id
+  //     })
+  //     if (deleteoneitem === -1) {
+  //       db.deleteCart(product_id).then(product => {
+  //         res.json(deleteProduct);
+  //       })
+  //     } else {
+  //       const deleteqty = deleteProduct[deleteoneitem].quantity - 1
+  //       const deleteID = deleteProduct[deleteoneitem].cart_id
+  //       db.decrementQty([deleteqty, deleteID]).then(product => {
+  //         res.status(200).json(product)
+  //       })
+  //     }
+  //   }).catch(error => {
+  //     console.log("error in deleteAddress", error);
+  //   })
+  // },
 
   ///regarding address and form 
   postFormToCart: (req, res) => {

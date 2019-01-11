@@ -42,7 +42,7 @@ app.get("/store/pets", controller.getProducts);
 
 //Endpoint for Cart
 app.post("/store/cart", cart_controller.postToCartAdd);
-app.delete('/store/cart/:product_id', cart_controller.deleteFromCart);
+app.delete('/store/cart/:product_id/:quantity', cart_controller.deleteFromCart);
 app.get('/store/cart/:auth0_id', cart_controller.getProductsInCart);
 app.post('/cart/address', cart_controller.postFormToCart);
 

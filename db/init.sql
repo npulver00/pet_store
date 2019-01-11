@@ -31,9 +31,10 @@ create table if not exists cart_items(
     id serial,
     user_id text,
     product_id integer,
-    quantity integer default 1
+    quantity integer default 1,
+    price decimal
 )
-select p.name, p.price, p.image, c.quantity, p.id as product_id, c.id as cart_id
+select p.name, p.price, p.image, c.quantity, p.id as product_id, c.id as cart_id, p.price as price
 from products p
 join cart_items c
 on c.product_id = p.id
