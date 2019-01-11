@@ -42,9 +42,11 @@ app.get("/store/pets", controller.getProducts);
 
 //Endpoint for Cart
 app.post("/store/cart", cart_controller.postToCartAdd);
-app.delete('/store/cart/:id', cart_controller.deleteFromCart);
+app.delete('/store/cart/:product_id', cart_controller.deleteFromCart);
 app.get('/store/cart/:auth0_id', cart_controller.getProductsInCart);
 app.post('/cart/address', cart_controller.postFormToCart);
+
+//Endpoint for Form/Addresses
 app.get('/store/addresshistory', cart_controller.getAddressHistory);
 app.put('/store/addresshistory/:id', cart_controller.editAddress);
 app.delete('/store/addresshistory/:id', cart_controller.deleteAddress);

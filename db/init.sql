@@ -33,12 +33,13 @@ create table if not exists cart_items(
     product_id integer,
     quantity integer default 1
 )
-select p.name, p.price, p.image, c.quantity
+select p.name, p.price, p.image, c.quantity, p.id as product_id, c.id as cart_id
 from products p
 join cart_items c
 on c.product_id = p.id
 join users u
 on  u.auth0_id = c.user_id
+where c.user_id = $1
 
 insert into products(name, price, image, species, category)
 values('Authority Grain Free Adult Dog Food-Chicken & Pea', 10.99, 'https://s7d2.scene7.com/is/image/PetSmart/AuthorityPackagingUpdates_BrandShop_0002_5221181_5279180_DryDog?$PB1001$', 'Dog', 'food' )

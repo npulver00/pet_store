@@ -10,11 +10,11 @@ class AddressFiles extends Component {
     super(props);
     this.state = {
       addresses: [],
-      address: "",
-      city: "",
-      state: "",
-      zip: "",
-      name: "",
+      // address: "",
+      // city: "",
+      // state: "",
+      // zip: "",
+      // name: "",
       isHidden: false,
 
     };

@@ -20,35 +20,26 @@ class Cart extends Component {
 
     getProductInCart = () => {
         axios.get(`/store/cart/${this.props.user.auth0_id}`).then(response => {
-            // console.log("getProductSession", response)
             this.setState({
                 checkoutCart: response.data,
-
-
-            })
-            // console.log("checkout", response.data)
-        })
-    }
-    deleteProductfromCart = (id) => {
-        axios.delete(`/store/cart/${id}`).then(response => {
-            console.log("Delete Cart Front", response)
-            this.setState({
-                checkoutCart: response.data
             })
         })
     }
-    // handleQuantity=(quantity)=>{
-    //     this.setState({
-    //         quantity
-    //     })
+    deleteProductfromCart = (product_id) => {
 
-    // }
+        console.log("id front", product_id)
+        axios.delete(`/store/cart/${product_id}`).then(() => {
+            // console.log("Delete Cart Front", response)
+            // this.setState({
+            //     checkoutCart: response.data
+            // })
+            this.getProductInCart()
+        })
+    }
+
 
 
     render() {
-        // console.log("this.props", this.props.user.cart)
-        //    const{cart}= this.props.user
-        // console.log("cart from state",this.state.checkoutCart)
 
 
         const cartItems = this.state.checkoutCart.map(item => {
@@ -58,16 +49,16 @@ class Cart extends Component {
                     <div><img src={item.image} alt="photo" /></div>
                     <div>Name:{item.name}</div>
                     <div>Quantity:{item.quantity}</div>
-                    {/* <div>Quantity<input type="number" name="quantity" min="1" max="100" value={this.state.quantity} onChange={e=>{this.handleQuantity(e.target.value)}}/></div> */}
                     <div>Price:{item.price}</div>
-                    <button onClick={() => this.deleteProductfromCart(item.id)}>Delete</button>
+                    <button onClick={() => this.deleteProductfromCart(item.product_id)}>Delete</button>
 
                 </div>
             )
         })
+        console.log("cartitems0000", this.state.checkoutCart)
         return (
             <div>
-                <div className="cart">{cartItems}</div>
+                <div className="cart">{this.props.user.auth0_id ? cartItems : alert("~PLEASE LOGIN FIRST~")}</div>
                 <div><NavLink to="/form"><button>Shipping address</button></NavLink></div>
                 <div><NavLink to="/addresshistory"><button>Address history</button></NavLink></div>
 
