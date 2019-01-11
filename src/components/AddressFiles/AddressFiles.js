@@ -23,27 +23,24 @@ class AddressFiles extends Component {
     this.getUsersAddresses();
   }
 
+
   getUsersAddresses = () => {
-    axios.get("/store/addresshistory").then(response => {
+    axios.get('/store/addresshistory').then(response => {
       console.log("responseGetUser", response);
       this.setState({
         addresses: response.data
       });
     });
+
   };
   editAddress = id => {
     const { addresses } = this.state
-
     const edituserAddress = addresses.find(address => address.id == id)
-    console.log("addresses help", addresses)
-    console.log("edituserAddress", edituserAddress);
+    // console.log("addresses help", addresses)
+    // console.log("edituserAddress", edituserAddress);
 
-    axios.put(`/store/addresshistory/${id}`, edituserAddress).then(response => {
-      console.log("put response.data", response);
-
-      // this.setState({
-      //   addresses: response.data
-      // });
+    axios.put(`/store/addresshistory/${id}`, edituserAddress).then(() => {
+      // console.log("put response.data", response);
       this.getUsersAddresses();
     });
   };
@@ -142,7 +139,7 @@ class AddressFiles extends Component {
 
     return (
       <div>
-        <div>{useraddresses}</div>
+        <div>{this.props.user.auth0_id ? useraddresses : ""}</div>
         {/* <input onChange={this.handleInput}/> */}
       </div>
     );

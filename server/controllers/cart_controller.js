@@ -1,21 +1,19 @@
 module.exports = {
   postToCartAdd: (req, res) => {
     const { product_id, auth0_id } = req.body;
-    console.log("posttocartAdd in CartController1", req.body)
+    // console.log("posttocartAdd in CartController1", req.body)
     const db = req.app.get("db");
     db.get_productstocart(auth0_id).then(cart => {
       const getcartIndex = cart.findIndex(product => {
-        console.log("product Now", product_id)
-        console.log("product after", product.product_id)
-        console.log("product", product)
+        // console.log("product Now", product_id)
+        // console.log("product after", product.product_id)
+        // console.log("product", product)
         return product_id === product.product_id
       })
-      console.log("getcartIndex", getcartIndex)
-
+      // console.log("getcartIndex", getcartIndex)
       if (getcartIndex === -1) {
         db.post_Cart({ product_id, auth0_id }).then(products => {
-          console.log("posttocartAdd in CartController2", products);
-
+          // console.log("posttocartAdd in CartController2", products);
           res.status(200).json(products);
         })
       } else {
@@ -23,14 +21,13 @@ module.exports = {
         const cartId = cart[getcartIndex].cart_id
         db.updateQuantity([productQty, cartId]).then(product => {
           res.status(200).json(product)
-        }
-        )
+        })
       }
     });
-
   },
   getProductsInCart: (req, res) => {
     const { auth0_id } = req.params
+
     // const{cart} = req.session.user.cart
     const db = req.app.get("db");
     db.get_productstocart(auth0_id).then(response => {
@@ -111,7 +108,7 @@ module.exports = {
       });
   },
   getAddressHistory: (req, res) => {
-    // console.log("getAddress", req.session.user)
+    console.log("getAddress", req.session.user)
     const db = req.app.get("db");
     db.get_addresses({
       auth0_id: req.session.user.auth0_id
