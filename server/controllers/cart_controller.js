@@ -27,18 +27,16 @@ module.exports = {
     })
   },
   deleteFromCart: (req, res) => {
-    const { product_id } = req.params
+    const { product_id, quantity } = req.params
+    console.log("req.params!", req.params)
     const db = req.app.get("db");
     db.deleteCart(product_id).then(deleteProduct => {
+      console.log("deleteProduct", deleteProduct)
       res.json(deleteProduct);
     })
       .catch(error => {
         console.log("error in deleteAddress", error);
       })
-
-
-
-
   },
 
   ///regarding address and form 
