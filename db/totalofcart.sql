@@ -1,0 +1,1 @@
+select sum(price) from cart_items

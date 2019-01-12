@@ -1,26 +1,36 @@
 module.exports = {
   postToCartAdd: (req, res) => {
-    const { product_id, auth0_id } = req.body;
+    const { product_id, auth0_id, price } = req.body;
     const db = req.app.get("db");
     db.get_productstocart(auth0_id).then(cart => {
       const getcartIndex = cart.findIndex(product => {
         return product_id === product.product_id
       })
       if (getcartIndex === -1) {
-        db.post_Cart({ product_id, auth0_id }).then(products => {
+
+        db.post_Cart({ product_id, auth0_id, price }).then(products => {
           res.status(200).json(products);
         })
       } else {
-        const productQty = cart[getcartIndex].quantity + 1
 
-        console.log("productQty", productQty)
-        const cartId = cart[getcartIndex].cart_id
-        console.log("cardId", cartId)
-        db.updateQuantity([productQty, cartId]).then(product => {
-          res.status(200).json(product)
-          console.log("product", product)
+        db.get_Item_info(product_id).then(product => {
+          // console.log("product", product)
+          // console.log("price", price)
+          const productQty = cart[getcartIndex].quantity + 1
+          const priceId = +productQty * +price
+          // console.log("quantity", productQty)
+          // console.log("priceId", priceId)
+          // console.log("productQty", productQty)
+          const cartId = cart[getcartIndex].cart_id
+          console.log("cardId", cartId)
+          db.updateQuantity([productQty, priceId, cartId]).then(product => {
+            res.status(200).json(product)
+            console.log("product", product)
+          })
         })
+
       }
+
     });
   },
   getProductsInCart: (req, res) => {
@@ -49,7 +59,7 @@ module.exports = {
   //   }
   // },
   deleteFromCart: (req, res) => {
-    const { product_id, quantity } = req.params
+    const { product_id } = req.params
     console.log("req.params!", req.params)
     const db = req.app.get("db");
 
@@ -58,8 +68,19 @@ module.exports = {
       res.json(deleteProduct);
     })
       .catch(error => {
-        console.log("error in deleteAddress", error);
+        console.log("error in deleteFormCart", error);
       })
+  },
+
+  totalFromCart: (req, res) => {
+    const db = req.app.get("db");
+    db.totalofcart().then(response => {
+      console.log("backkkkk")
+      console.log("responsetotal", response)
+      res.status(200).json(response)
+    })
+
+
   },
 
 

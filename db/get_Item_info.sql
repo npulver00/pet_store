@@ -1,0 +1,1 @@
+select * from cart_items where product_id = id

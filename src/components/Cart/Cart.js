@@ -10,12 +10,13 @@ class Cart extends Component {
         super(props);
         this.state = {
             checkoutCart: [],
-            // quantity: 1,
+            total: []
         }
     }
 
     componentDidMount() {
         this.getProductInCart()
+        this.totalfromcart()
     }
 
     getProductInCart = () => {
@@ -36,6 +37,15 @@ class Cart extends Component {
             this.getProductInCart()
         })
     }
+    totalfromcart = () => {
+
+        axios.get('/store/cart').then(response => {
+            console.log("totalcart", response)
+            this.setState({
+                total: response.data[0].sum
+            })
+        })
+    }
 
 
 
@@ -50,7 +60,7 @@ class Cart extends Component {
                     <div>Name:{item.name}</div>
                     <div>Quantity:{item.quantity}</div>
                     <button>+</button>
-                    <div>Price:{item.price}</div>
+                    <div>Price:{item.totalprice}</div>
                     <button onClick={() => this.deleteProductfromCart(item.product_id, item.quantity)}>Delete</button>
 
                 </div>
@@ -62,6 +72,7 @@ class Cart extends Component {
                 <div className="cart">{this.props.user.auth0_id ? cartItems : alert("~PLEASE LOGIN FIRST~")}</div>
                 <div><NavLink to="/form"><button>Shipping address</button></NavLink></div>
                 <div><NavLink to="/addresshistory"><button>Address history</button></NavLink></div>
+                <div>Total{this.state.total}</div>
 
             </div>
         );

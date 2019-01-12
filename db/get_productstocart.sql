@@ -1,4 +1,4 @@
-select p.name, p.price, p.image, c.quantity, p.id as product_id, c.id as cart_id
+select p.name, p.price as productprice, p.image, c.quantity, p.id as product_id, c.id as cart_id, c.price as totalprice 
 from products p
 join cart_items c
 on c.product_id = p.id

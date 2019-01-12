@@ -26,10 +26,11 @@ class Landingpage extends Component {
       // console.log("responsedata", response.data)
     });
   };
-  postProductToCart = (product_id) => {
+  postProductToCart = (product_id, price) => {
     const carttoDB = {
       auth0_id: this.props.user.auth0_id,
-      product_id: product_id
+      product_id: product_id,
+      price: price
 
     }
     console.log("carttoDB", carttoDB, this.props.user)
@@ -59,7 +60,7 @@ class Landingpage extends Component {
           <div>${product.price}</div>
           <button
             onClick={() => {
-              this.postProductToCart(product.id);
+              this.postProductToCart(product.id, product.price);
             }}
           >
             Add to Cart

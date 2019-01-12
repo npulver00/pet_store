@@ -18,7 +18,10 @@ BEGIN
     IF qty <2 THEN
         DELETE FROM cart_items where product_id = product_idd;
     ELSE 
-        UPDATE cart_items SET quantity = (quantity -1)
+        UPDATE cart_items 
+        SET quantity = (quantity -1),
+         price = ROUND(((qty - 1) * price / qty), 2) 
          WHERE product_id = product_idd;
+     
   END IF;
 END $$;
