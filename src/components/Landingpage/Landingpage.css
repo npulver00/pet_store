@@ -13,18 +13,18 @@ body{
 }
 
 .landingpage {
-  margin-top: 200px;
+
   display: flex;
   flex-direction: column;
   justify-items: center;
   margin: 0% auto;
-  z-index: 4;
-  width: 90%;
-  background-color:rgb(240, 240, 240);
+  /* z-index: 4; */
+  width: 100%;
+ 
   position: relative;
   letter-spacing: 1px;
 
-  /* background-color: rgb(240, 240, 240); */
+  background-color: rgb(240, 240, 240);
 
 
 
@@ -32,19 +32,13 @@ body{
   
 }
 
-/* .title {
-  margin: 15%;
-  padding: 2%;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  font-family: "Pacifico", cursive;
-  font-size: 45px;
+.slick1{
+  width: 85%;
+  
  
- 
- 
-} */
+  padding-bottom: 30px;
+  margin: 0% auto;
+} 
 
 .product {
   display: flex;

@@ -1,0 +1,20 @@
+
+
+
+
+.picimage img{
+    width: 30%;
+    height: 200px;
+    border-radius: 20px;
+    margin: 0% auto;
+    display: inline-block;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px;
+    
+
+}
+
+
+
+

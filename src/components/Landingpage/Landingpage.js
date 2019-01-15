@@ -4,6 +4,8 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { allProducts, removeCart, addCart, setUser } from "../../redux/reducer";
+import Slick from "../Slick/Slick";
+
 
 class Landingpage extends Component {
   constructor(props) {
@@ -74,14 +76,15 @@ class Landingpage extends Component {
       );
     }) : "loading"
     return (
-      <div className="landingpage">
-        <div className="title">
 
-        </div>
+      <div className="landingpage">
+        <div className="slick1"><Slick /></div>
+
         <div className="product">{listItems}</div>
 
         <div />
       </div>
+
     );
   }
 }

@@ -10,7 +10,7 @@ import pic from '../Image/logo1.png'
 const Logo = styled.img`
     display: block;
     margin-left: 120px;
-    padding: 50px;
+    padding: 3px;
     width: 120px;
 `;
 
@@ -20,13 +20,17 @@ const NavWrapper = styled.div`
     width: 100%;
     margin: 0 auto;
     padding: 90px;
+   
 `;
 
 const Button = styled.button`
     color: white;
-    border: 1px solid white;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 20px 5px 20px 5px;
+    border: 1px solid black;
     margin: 10px 20px 10px 0;
-    background-color: gray;
+    background-color: #85469E;
     padding: 5px 30px;
     text-align: center;
     &:hover {
@@ -56,21 +60,13 @@ width: 70%;
 text-align: center;
 
 margin: 0 auto;
-margin-top: -120px;
+margin-top: -90px;
 
 font-family: "Pacifico", cursive;
 font-size: 50px;
 
 `;
 
-// const UserPicture = styled.div`
-// width: 50px;
-// border-radius: 50%;
-// border: 2px black;
-// padding: 20px;
-// font-weight: 500px;
-
-// `;
 
 
 
