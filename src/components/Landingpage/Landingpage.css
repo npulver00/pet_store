@@ -5,20 +5,25 @@ body{
   background-color:rgb(240, 240, 240);
   
 
+  
+
 
   
   
 }
 
 .landingpage {
+  margin-top: 200px;
   display: flex;
   flex-direction: column;
   justify-items: center;
   margin: 0% auto;
-  width: 800px;
-  background-color: white;
-  border: solid black 1px;
+  z-index: 4;
+  width: 90%;
+  background-color:rgb(240, 240, 240);
+  position: relative;
   letter-spacing: 1px;
+
   /* background-color: rgb(240, 240, 240); */
 
 
@@ -27,7 +32,7 @@ body{
   
 }
 
-.title {
+/* .title {
   margin: 15%;
   padding: 2%;
   display: flex;
@@ -36,17 +41,19 @@ body{
   align-items: center;
   font-family: "Pacifico", cursive;
   font-size: 45px;
-  position: relative sticky;
  
-}
+ 
+ 
+} */
 
 .product {
   display: flex;
-  flex: 1;
+  /* flex: 1; */
   flex-wrap: wrap;
   flex-direction: row;
-  position: relative sticky;
+  position: relative;
   padding: 5px;
+  top: 1
   
 
 

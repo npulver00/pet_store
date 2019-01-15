@@ -4,13 +4,19 @@ import { connect } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import axios from 'axios';
 import { inputAddress } from "../../redux/reducer";
+// import Stripecheckout from "../Stripecheckout/Stripecheckout";
+import Stripecheckout from 'react-stripe-checkout';
+
+
+
 
 class Cart extends Component {
     constructor(props) {
         super(props);
         this.state = {
             checkoutCart: [],
-            total: []
+            total: [],
+
         }
     }
 
@@ -46,11 +52,15 @@ class Cart extends Component {
             })
         })
     }
-
+    ontoken = (token) => {
+        const { total } = this.state
+        axios.post("/stripe", { token, total })
+            .then(response => alert("Successful payment"))
+    }
 
 
     render() {
-
+        const { total } = this.state
 
         const cartItems = this.state.checkoutCart.map(item => {
 
@@ -70,10 +80,21 @@ class Cart extends Component {
         return (
             <div>
                 <div className="cart">{this.props.user.auth0_id ? cartItems : alert("~PLEASE LOGIN FIRST~")}</div>
+
                 <div><NavLink to="/form"><button>Shipping address</button></NavLink></div>
                 <div><NavLink to="/addresshistory"><button>Address history</button></NavLink></div>
-                <div>Total{this.state.total}</div>
-
+                <div>
+                    <div>Total + tax{this.state.total}</div>
+                    <div><Stripecheckout
+                        ComponentClass="stripe"
+                        name="Stella and Toby's World"
+                        // email="test@gmail.com"
+                        amount={total * 100}
+                        token={this.ontoken}
+                        allowRememberMe={false}
+                        stripeKey={process.env.REACT_APP_STRIPE_KEY}
+                    /></div>
+                </div>
             </div>
         );
     }

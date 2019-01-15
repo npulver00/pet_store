@@ -76,7 +76,7 @@ class Landingpage extends Component {
     return (
       <div className="landingpage">
         <div className="title">
-          <h1>Stella & Toby Pet World</h1>
+
         </div>
         <div className="product">{listItems}</div>
 

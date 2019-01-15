@@ -6,6 +6,8 @@ require("dotenv").config();
 const authcontroller = require("./controllers/authcontroller");
 const controller = require("./controllers/controller");
 const cart_controller = require("./controllers/cart_controller");
+const stripe_controller = require("./controllers/stripe_controller");
+
 
 //add connect-pg simple???
 
@@ -21,6 +23,7 @@ app.use(
     }
   })
 );
+
 
 massive(process.env.CONNECTION_STRING)
   .then(database => {
@@ -46,6 +49,9 @@ app.delete('/store/cart/:product_id/:quantity', cart_controller.deleteFromCart);
 app.get('/store/cart/:auth0_id', cart_controller.getProductsInCart);
 app.post('/cart/address', cart_controller.postFormToCart);
 app.get('/store/cart', cart_controller.totalFromCart)
+
+//stripe
+app.post('/stripe', stripe_controller.stripeCheckout);
 
 //Endpoint for Form/Addresses
 app.get('/store/addresshistory', cart_controller.getAddressHistory);

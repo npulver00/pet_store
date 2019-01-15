@@ -5,16 +5,16 @@ module.exports = {
     const { code } = req.query;
     console.log("Login Code query", code);
     let redirect_uri =
-    process.env.HOST == "localhost"
-    ?`http://${req.headers.host}/auth/callback`
-    :`https://${req.headers.host}/auth/callback`
+      process.env.HOST == "localhost"
+        ? `http://${req.headers.host}/auth/callback`
+        : `https://${req.headers.host}/auth/callback`
     const payload = {
       client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
       client_secret: process.env.AUTH0_CLIENT_SECRET,
       code,
       grant_type: "authorization_code",
       redirect_uri
-    };   
+    };
 
     function tradeCodeForAccessToken() {
       return axios.post(
@@ -26,7 +26,7 @@ module.exports = {
       console.log("tradeAccessTokenForUserInfo", response.data.access_token);
       return axios.get(
         `https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo?access_token=${
-          response.data.access_token
+        response.data.access_token
         }`
       );
     }
@@ -37,7 +37,7 @@ module.exports = {
       return db.get_user([user.sub]).then(users => {
         if (users.length) {
           req.session.user = {
-            name: users[0].name,
+            username: users[0].username,
             email: users[0].email,
             picture: users[0].picture,
             auth0_id: users[0].auth0_id
@@ -65,7 +65,7 @@ module.exports = {
   },
 
   getUser: (req, res) => {
-    res.json( req.session.user );
+    res.json(req.session.user);
   },
 
   logout: (req, res) => {
