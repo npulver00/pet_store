@@ -3,41 +3,105 @@ body{
   padding: 0;
   width: 100%;
   background-color:rgb(240, 240, 240);
-  
-
-  
-
-
-  
-  
 }
 
 .landingpage {
-
   display: flex;
   flex-direction: column;
   justify-items: center;
   margin: 0% auto;
-  /* z-index: 4; */
   width: 100%;
- 
   position: relative;
   letter-spacing: 1px;
-
   background-color: rgb(240, 240, 240);
+  overflow: hidden;
+}
+.allfilter{
+  padding: 5px;
+  margin: 0% auto;
+  /* background-color:#8FD8D2; */
+  
+  
+  background: rgba(149,218,212,1);
+background: -moz-linear-gradient(top, rgba(149,218,212,1) 0%, rgba(149,218,212,1) 12%, rgba(149,218,212,0.99) 13%, rgba(149,218,212,0.74) 40%, rgba(149,218,212,0.58) 57%, rgba(164,223,218,0.53) 62%, rgba(252,252,252,0.53) 91%, rgba(255,255,255,0.53) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(149,218,212,1)), color-stop(12%, rgba(149,218,212,1)), color-stop(13%, rgba(149,218,212,0.99)), color-stop(40%, rgba(149,218,212,0.74)), color-stop(57%, rgba(149,218,212,0.58)), color-stop(62%, rgba(164,223,218,0.53)), color-stop(91%, rgba(252,252,252,0.53)), color-stop(100%, rgba(255,255,255,0.53)));
+background: -webkit-linear-gradient(top, rgba(149,218,212,1) 0%, rgba(149,218,212,1) 12%, rgba(149,218,212,0.99) 13%, rgba(149,218,212,0.74) 40%, rgba(149,218,212,0.58) 57%, rgba(164,223,218,0.53) 62%, rgba(252,252,252,0.53) 91%, rgba(255,255,255,0.53) 100%);
+background: -o-linear-gradient(top, rgba(149,218,212,1) 0%, rgba(149,218,212,1) 12%, rgba(149,218,212,0.99) 13%, rgba(149,218,212,0.74) 40%, rgba(149,218,212,0.58) 57%, rgba(164,223,218,0.53) 62%, rgba(252,252,252,0.53) 91%, rgba(255,255,255,0.53) 100%);
+background: -ms-linear-gradient(top, rgba(149,218,212,1) 0%, rgba(149,218,212,1) 12%, rgba(149,218,212,0.99) 13%, rgba(149,218,212,0.74) 40%, rgba(149,218,212,0.58) 57%, rgba(164,223,218,0.53) 62%, rgba(252,252,252,0.53) 91%, rgba(255,255,255,0.53) 100%);
+background: linear-gradient(to bottom, rgba(149,218,212,1) 0%, rgba(149,218,212,1) 12%, rgba(149,218,212,0.99) 13%, rgba(149,218,212,0.74) 40%, rgba(149,218,212,0.58) 57%, rgba(164,223,218,0.53) 62%, rgba(252,252,252,0.53) 91%, rgba(255,255,255,0.53) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#95dad4', endColorstr='#ffffff', GradientType=0 );
+width: 100vw;
+  height: 70px;
 
-
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  overflow: visible;
 
  
+}
+.allfilter > h3{
+  padding: 5px;
+  margin: 0% auto;
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+  color:#DF744A;
+  display: inline-block;
+  border-radius: 10px;
+  text-shadow: 2px 2px 2px white;
+
+
+}
+.choose1{
+  margin: 0% auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-direction: column; 
+  border-radius: 10px;
+  
+  
+
+}
+.input{
+  background-color: #DF744A;
+  font-weight: bold;
+  color: white;
+  font-size: 20px;
+  width: 150px;
+  height: 30px;
+  left: 0;
+  right: 0;
+ 
+
+}
+.input1{
+  background-color: #DF744A;;
+  font-weight:400px;
+  color: white;
+  font-size: 20px;
+  width: 150px;
+  height: 30px;
+  border-radius: 10px;
+  margin: 0 auto;
+ 
+
+}
+.input1:hover{
+  
+  background-color:#DCB239;
+    border: 1px solid white;
   
 }
 
+
 .slick1{
-  width: 85%;
-  
- 
+  width: 90%;
   padding-bottom: 30px;
   margin: 0% auto;
+  padding-left: 45px;
 } 
 
 .product {
@@ -46,8 +110,11 @@ body{
   flex-wrap: wrap;
   flex-direction: row;
   position: relative;
-  padding: 5px;
-  top: 1
+  margin-top: 5px;
+  
+
+
+
   
 
 
@@ -55,8 +122,6 @@ body{
 
 
 .productBox {
-  /* position: relative; */
- 
   width: 300px;
   height: 300px;
   align-items: center;
@@ -64,9 +129,6 @@ body{
   margin: 0% auto;
   perspective: 1000px;
   padding: 5px;
-  
-  
-  
 }
 .flipinnerbox{
   position: relative;
@@ -86,13 +148,9 @@ body{
   width: 60%;
   height: 60%;
   backface-visibility: hidden;
-  
-  /* border: solid black 2px; */
 
 }
 .flipcardfront{
-
-  /* height: 10px; */
   width: 200px;
   color: black;
   z-index: 1;
@@ -100,44 +158,24 @@ body{
 
 }
 .flipcardback{
-   /* background-color: grey; */
-   width: 200px;
-   margin: 20px;
-   padding-top: 80px;
-  
-   transform: rotateY(360deg);
+  width: 200px;
+  margin: 20px;
+  padding-top: 80px;
+  transform: rotateY(360deg);
   z-index: 1; 
 }
 .productBox div {
   margin: 0% auto;
-  /* margin-top: 2px;
-  margin-bottom: 3px; */
-
-  /* padding: 4px; */
   font-size: 15px;
   font-weight: 700px;
-  /* background-color: rgb(233, 220, 220); */
-
-  
-  
 }
 .productBox img{
-
-
   width: 200px;
- 
-
-
-    
+  
 }
 .productBox button{
   margin-top: 10px;
-   border-radius: 10px;
-    /* position: absolute;
-   z-index: 9999; */
-   
- 
-
+  border-radius: 10px;
 }
 
 /* .productBox img:hover{

@@ -13,12 +13,20 @@ class Landingpage extends Component {
     this.state = {
       image: [],
       name: [],
-      price: null
+      price: null,
+      filterArray: [],
+      filters: {
+        catproducts: ["food", "toys"],
+        dogproducts: ["food", "toys"],
+        cats: ["cat"],
+        dogs: ["dog"]
+      }
     };
   }
 
   componentDidMount() {
     this.fetchProducts();
+
   }
 
   fetchProducts = () => {
@@ -45,11 +53,24 @@ class Landingpage extends Component {
   };
   // removeCart
 
+  //filter
+  multiplefilter = (filter) => {
+
+    const filteredArray = this.props.productList.filter(product => product.category.includes(`${filter}`))
+    this.setState({
+      filterArray: filteredArray
+
+    })
+
+  }
+
   render() {
     const { productList } = this.props;
+    console.log("goodbye", this.props)
+    console.log("help!!!", this.state.filterArray)
     // const {cart}= this.props.user;
 
-    // console.log("productlist", productList)
+    console.log("productlist", productList)
     const listItems = this.props.productList.length ? this.props.productList.map(product => {
       return (
         <div className="productBox">
@@ -68,7 +89,7 @@ class Landingpage extends Component {
             Add to Cart
           </button>
           <div className="flipcardback">
-            <p>Hello</p>
+            <p></p>
           </div>
           {/* <NavLink to="/"> */} <div />
           {/* </NavLink> */}
@@ -79,11 +100,45 @@ class Landingpage extends Component {
 
       <div className="landingpage">
         <div className="slick1"><Slick /></div>
+        <div className="allfilter">
+          <label className="choose1">
+            <select className="input1" onChange={(e) => { this.multiplefilter(e.target.value) }}>
+              <option className="input" value="Dogs">Dogs</option>
+              <option className="input" value="dogfood" >Dog Food</option>
+              <option className="input" value="dogtoys">Dog Toys</option>
+            </select>
+          </label>
+          <h3>Shop by Pet</h3>
+          <label className="choose1">
+            <select className="input1" onChange={(e) => { this.multiplefilter(e.target.value) }}>
+              <option className="input" value="Cats">Cats</option>
+              <option className="input" value="catfood">Cat Food</option>
+              <option className="input" value="cattoys"> Cat Toys</option>
 
-        <div className="product">{listItems}</div>
+            </select>
+          </label>
+        </div>
+
+        {!this.state.filterArray.length > 0 && <div className="product">{listItems}</div>}
 
         <div />
-      </div>
+        {this.state.filterArray.map(e => {
+          return (<div className="productBox">
+            <div> <img src={e.image} alt="eimage" /></div>
+            <div>{e.name}</div>
+            <div>${e.price}</div>
+            <button
+              onClick={() => {
+                this.postProductToCart(e.id, e.price);
+              }}
+            >Add to Cart</button>
+
+          </div>
+
+          )
+        })}
+
+      </div >
 
     );
   }

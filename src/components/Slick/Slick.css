@@ -5,12 +5,12 @@
 .picimage img{
     width: 30%;
     height: 200px;
-    border-radius: 20px;
+    border-radius: 30px;
     margin: 0% auto;
     display: inline-block;
     justify-content: center;
     flex-direction: column;
-    padding: 15px;
+    padding: 17px;
     
 
 }

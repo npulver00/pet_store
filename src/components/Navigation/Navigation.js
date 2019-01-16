@@ -5,13 +5,15 @@ import axios from 'axios';
 import { setUser } from "../../redux/reducer";
 import { connect } from "react-redux";
 import styled from 'styled-components';
-import pic from '../Image/logo1.png'
+import pic from '../Image/logosunset.png';
 
 const Logo = styled.img`
     display: block;
     margin-left: 120px;
-    padding: 3px;
+    padding: 6px;
     width: 120px;
+    margin-top: 8px;
+    z-index: 9999;
 `;
 
 const NavWrapper = styled.div`
@@ -28,16 +30,15 @@ const Button = styled.button`
     font-weight: bold;
     letter-spacing: 2px;
     border-radius: 20px 5px 20px 5px;
-    border: 1px solid black;
     margin: 10px 20px 10px 0;
-    background-color: #85469E;
+    background-color: #DF744A;
     padding: 5px 30px;
     text-align: center;
-    &:hover {
-      background-color: black;
-      border: 1px solid white;
+    &:hover { background-color:#DCB239;
+        border: 1px dotted white;
     }
     float: left;
+    box-shadow: 2px 2px 3px white;
 `;
 
 const UserInfo = styled.div`
@@ -51,17 +52,14 @@ const UserInfo = styled.div`
 
 const UserButton = styled(Button)`
     display: inline-block;
-     margin-right: 10px;
-   
+    margin-right: 10px;
 `;
 
 const TitlePage = styled.h1`
 width: 70%;
 text-align: center;
-
 margin: 0 auto;
 margin-top: -90px;
-
 font-family: "Pacifico", cursive;
 font-size: 50px;
 
@@ -121,6 +119,7 @@ class Navigation extends Component {
                 <div className="navbar">
                     <NavWrapper>
                         <div><NavLink activeClassName="active" exact to="/" ><Button>Home</Button></NavLink></div>
+
                         <div><NavLink to="/products"><Button>Dogs</Button></NavLink></div>
                         <div><NavLink to="/products"><Button>Cats</Button></NavLink></div>
                         <div><NavLink to="cart"><Button>Cart</Button></NavLink></div>

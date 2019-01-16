@@ -22,6 +22,7 @@ class Slick extends Component {
             slideToShow: 3,
             slideToScroll: 3,
             autoplay: true,
+            fade: true,
 
         }
         return (
