@@ -17,7 +17,9 @@ class Cart extends Component {
         this.state = {
             checkoutCart: [],
             total: [],
-            amount: []
+            amount: [],
+            primaryAddress: [],
+            UserAddress: []
 
         }
     }
@@ -26,6 +28,8 @@ class Cart extends Component {
         this.getProductInCart()
         this.amountfromcart()
         this.totalfromcart()
+        this.getUsersAddressestoCart()
+
 
     }
 
@@ -95,9 +99,41 @@ class Cart extends Component {
 
     };
 
+    getUsersAddressestoCart = () => {
+        axios.get('/store/addresshistory').then(response => {
+            console.log("primaryAddress", response);
+            this.setState({
+                UserAddress: response.data
+            });
+            console.log("stateprimary", response.data)
+            console.log("stateprim000", this.state.primaryAddress)
+            this.postprimarytocart()
+        });
+    };
+
+    postprimarytocart = () => {
+
+        const { UserAddress } = this.state
+        console.log("primaryAddress99999", UserAddress)
+        UserAddress.filter(e => {
+            console.log("jjjjjj", e)
+            if (e.primary_address) {
+                console.log("e", e)
+                let newprimary = this.state.primaryAddress.slice()
+                newprimary.push(e)
+
+                this.setState({
+                    primaryAddress: newprimary
+                })
+            }
+        })
+
+    }
+
 
     render() {
         console.log("checkoutCart!!", this.state.checkoutCart)
+        console.log("SamHelp!", this.state.primaryAddress)
 
         const { total } = this.state
 
@@ -122,27 +158,37 @@ class Cart extends Component {
 
 
             !this.props.user.auth0_id ?
-                // <div>{this.props.history.push("/")}{alert("~PLEASE LOGIN FIRST~")} </div>
-                <Redirect to="/" />
+                <div>{this.props.history.push("/")}{alert("~PLEASE LOGIN FIRST~")} </div>
+                // <Redirect to="/" /> 
                 : <div>
                     <div className="cart">{this.props.user.auth0_id ? cartItems : alert("~PLEASE LOGIN FIRST~")}</div>
 
                     <div className="cartbutton"><NavLink to="/form"><button>Add Shipping address</button></NavLink></div>
                     <div className="cartbutton"><NavLink to="/addresshistory"><button>Address history</button></NavLink></div>
-                    <div className="totalbox">
-                        <div>Amount: ${this.state.amount}</div>
-                        <div>Tax: ${(this.state.total - this.state.amount).toFixed(2)} </div>
-                        <div className="total">Total: ${this.state.total}</div>
-                        <div>Shipping: Free! </div>
-                        <div className="stripebutton"><Stripecheckout
-                            ComponentClass="stripe"
-                            name="Stella and Toby's World"
-                            // email="test@gmail.com"
-                            amount={total * 100}
-                            token={this.ontoken}
-                            allowRememberMe={false}
-                            stripeKey={process.env.REACT_APP_STRIPE_KEY}
-                        /></div>
+                    <div className="totalAddress">
+                        <div className="primaryAddCart">
+                            <h3>Use this Address</h3>
+                            <div>{this.state.primaryAddress.length > 0 && this.state.primaryAddress[0].name}</div>
+                            <div>{this.state.primaryAddress.length > 0 && this.state.primaryAddress[0].address}</div>
+                            <div>{this.state.primaryAddress.length > 0 && this.state.primaryAddress[0].city}</div>
+                            <div>{this.state.primaryAddress.length > 0 && this.state.primaryAddress[0].state}</div>
+                            <div>{this.state.primaryAddress.length > 0 && this.state.primaryAddress[0].zip}</div>
+                        </div>
+                        <div className="totalbox">
+                            <div className="total">Amount: ${this.state.amount}</div>
+                            <div className="total">Tax: ${(this.state.total - this.state.amount).toFixed(2)} </div>
+                            <div className="total">Total: ${this.state.total}</div>
+                            <div className="total">Shipping: Free! </div>
+                            <div className="stripebutton"><Stripecheckout
+                                ComponentClass="stripe"
+                                name="Stella and Toby's World"
+                                // email="test@gmail.com"
+                                amount={total * 100}
+                                token={this.ontoken}
+                                allowRememberMe={false}
+                                stripeKey={process.env.REACT_APP_STRIPE_KEY}
+                            /></div>
+                        </div>
                     </div>
 
                 </div>

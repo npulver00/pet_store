@@ -22,9 +22,11 @@
    font-weight: bold;
    font-size: 20px;
    text-shadow: 2px 2px 2px rgb(218, 212, 212);
+ 
 
 
 }
+
 
 .cartCard > div{
     /* background-color: green; */
@@ -47,52 +49,88 @@
 .cartCard img{
     width: 150px;
 }
-
+h3{
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: underline;
+    padding: 10px;
+    font-family: 'Courgette', cursive;
+}
+.primaryAddCart div{
+    padding: 5px;
+}
+.primaryAddCart{
+    border: red solid 2px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color:  #DF744A;
+    font-weight: bold;
+    font-size: 25px;
+    width: 400px;
+    margin-right: 200px;
+    letter-spacing: 1.5px;
+    background-color:#FEDCD2;
+    border-radius: 10px;
+    border: solid #DF744A 2px;
+}
+.totalAddress{
+    /* background-color: green; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    margin: 0% auto;
+    height: 400px;
+}
 .qty{
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     margin: 10px;
+    padding: 5px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-  
-    background-color: #FEDCD2
+    border: solid #DF744A 1px;
+    background-color: #FEDCD2;
+    border-radius: 3px;
     
 } 
 .deleteButton{
     width: 50px;
-    height: 30px;
+    height: 35px;
     margin: 10px;
     background-color:#FEDCD2;
     text-align: center;
-    padding: 5px;
+    
+    border: solid #DF744A 1px;
+    border-radius: 3px;
 
 }
 
 .totalbox{
-   
-    width: 10%;
-    height: 120px;
+    width: 20%;
+    height: 200px;
     display: flex;
-    justify-items: flex-end;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    margin: 5px;
-    padding: 15px;
-    margin-bottom: 90px;
+    padding: 25px;
     color:  #DF744A;
     font-weight: bold;
-    font-size: 20px;
-    margin-left: 70%;
-    letter-spacing: 1px;
+    font-size: 25px;
+    letter-spacing: 1.5px;
     background-color:#FEDCD2;
     border-radius: 10px;
-   
+    border: solid #DF744A 2px;
 }
 .stripebutton{
     margin: 15px;
     border-radius: 10px;
+
     
 }
 .cartbutton button{
@@ -100,10 +138,8 @@
     font-weight: bold;
     letter-spacing: 2px;
     border-radius: 5px;
-    
-   
+    padding: 10px;    
     background-color: #DF744A;
-   
     text-align: center;
     box-shadow: 2px 2px 3px white;
    
@@ -116,4 +152,9 @@
     margin: 0% auto;
     margin-left: 10%;
     margin-top: 10px;
+   
+}
+.total{
+    margin: 4px;
+    font-weight: bold;
 }

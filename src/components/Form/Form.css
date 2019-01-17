@@ -8,12 +8,12 @@
     align-items: center;
     margin: 0% auto;
     color: #DF744A;
-    height: 350px;
+    height: 500px;
     width: 800px;
     font-size: 35px;
   border: solid #DF744A 1px;
   font-weight: bold;
- 
+ margin-top: 60px;
 }
 
 .form input{
@@ -52,6 +52,10 @@
 .form .zip{
     margin-left: 75px;
 }
+.form .primary{
+    margin-left: 9px;
+    
+}
 .formbutton{
     color: white;
     font-weight: bold;
@@ -61,6 +65,18 @@
     background-color: #DF744A;
     text-align: center;
     box-shadow: 2px 2px 3px white;
+    height: 30px;
+
+
+}
+.formBoxButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0% auto;
+    margin-bottom: 50px;
+  
+    height: 100px;
 }
 
 

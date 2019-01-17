@@ -14,6 +14,7 @@ class Form extends Component {
       city: "",
       state: "",
       zip: "",
+      primary_address: ""
 
     };
   }
@@ -25,7 +26,7 @@ class Form extends Component {
     });
   };
   postAddress = () => {
-    const { name, address, city, state, zip } = this.state;
+    const { name, address, city, state, zip, primary_address } = this.state;
     const { auth0_id, username } = this.props.user
     const postnewAddress = {
       address,
@@ -34,8 +35,8 @@ class Form extends Component {
       zip,
       auth0_id,
       username,
-
       name,
+      primary_address
 
 
 
@@ -116,18 +117,26 @@ class Form extends Component {
                 />
               </div>
             </div>
+            Primary:
+             <input className="primary" value={this.state.primary_address} name="primary_address" placeholder="Yes or No" onChange={e => {
+              this.postInputAddress(e);
+            }} /></div>
+        </div>
+        <div>
+          <div className="formBoxButton">
+            <NavLink to="/Cart">
+              <button className="formbutton" onClick={() => { this.postAddress() }}>Submit</button>
+            </NavLink>
           </div>
 
           <div>
-            <div>
-            </div>
-
-
           </div>
-          <NavLink to="/Cart">
-            <button className="formbutton" onClick={() => { this.postAddress() }}>Submit</button>
-          </NavLink>
+
         </div>
+        <div>
+        </div>
+
+
       </div>
     );
   }

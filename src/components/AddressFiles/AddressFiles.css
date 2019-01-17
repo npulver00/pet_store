@@ -5,10 +5,16 @@
     border-radius: 5px;
     margin: 5px;
     background-color: #DF744A;
-  
     text-align: center;
     box-shadow: 2px 2px 3px white;
 
+}
+.divide div{
+    padding: 5px;
+    /* background-color: blue; */
+    width: 300px;
+  
+   
 }
 
 
@@ -19,7 +25,7 @@
     border-radius: 5px;
     margin: 5px;
     background-color: #DF744A;
-   
+    margin-top: 20px;
     text-align: center;
     box-shadow: 2px 2px 3px white;
 }

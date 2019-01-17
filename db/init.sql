@@ -24,7 +24,8 @@ create table if not exists shipping_address(
     address text,
     city text,
     state text,
-    zip integer
+    zip integer,
+    primary_address boolean
 )
 
 create table if not exists cart_items(

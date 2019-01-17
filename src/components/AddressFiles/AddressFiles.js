@@ -4,31 +4,39 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { inputAddress } from "../../redux/reducer";
 import styled from 'styled-components';
+import Header from "../Header/Header";
 import { NavLink } from "react-router-dom";
 
 const AddressWrapper = styled.div`
 background-color: #DCB239;
 border: solid black 2px;
-padding: 50px;
-height: 200px;
+padding: 70px;
+height: 250px;
 width: 300px;
 display: inline-block;
 margin: 20px;
 text-align: center;
 border-radius: 10px;
-margin-left: 100px;
-letter-spacing: 1px;
+margin-left: 90px;
+letter-spacing: 2px;
 font-size: 20px;
 color: black;
 font-weight: 500;
+margin-top: 50px;
 `;
 
 
 
 
 const Submit = styled.div`
-  margin: 10px;
-  height: 100px;
+ display: flex;
+ justify-content: center;
+ align-content: center;
+ flex-direction: column;
+ text-align: center
+ font-weight: bold;
+ height: 200px;
+
 `;
 
 
@@ -54,19 +62,24 @@ class AddressFiles extends Component {
       this.setState({
         addresses: response.data
       });
+      console.log("addressGet", response.data)
+      console.log("addressesAdd", this.state.addresses)
     });
 
   };
   editAddress = id => {
     const { addresses } = this.state
     const edituserAddress = addresses.find(address => address.id == id)
-    // console.log("addresses help", addresses)
-    // console.log("edituserAddress", edituserAddress);
-
-    axios.put(`/store/addresshistory/${id}`, edituserAddress).then(() => {
-      // console.log("put response.data", response);
-      this.getUsersAddresses();
-    });
+    console.log("addresses help", addresses)
+    console.log("edituserAddress", edituserAddress);
+    if (this.state.addresses.filter(address => address.primary_address).length > 1) {
+      alert('You can only have one primary address!')
+    } else {
+      axios.put(`/store/addresshistory/${id}`, edituserAddress).then((response) => {
+        console.log("put response.data", response);
+        this.getUsersAddresses();
+      });
+    }
   };
   deleteAddress = id => {
     axios.delete(`/store/addresshistory/${id}`).then(response => {
@@ -87,15 +100,30 @@ class AddressFiles extends Component {
   };
 
   submitAddress = () => {
-    this.state.isHidden
-      ? this.setState({
-        isHidden: false
-      })
-      : this.setState({
-        isHidden: true
-      });
-    console.log(this.state.isHidden);
+    if (this.state.addresses.filter(address => address.primary_address).length > 1) {
+      alert('You can only have one primary address!')
+    } else {
+      this.state.isHidden
+        ? this.setState({
+          isHidden: false
+        })
+        : this.setState({
+          isHidden: true
+        });
+
+
+    }
+
+    // console.log("submitAddress", this.state.isHidden);
   };
+
+  onClick = (id) => {
+    console.log(id)
+    this.submitAddress()
+    this.editAddress(id)
+  }
+
+
 
   render() {
     const { addresses } = this.state;
@@ -130,30 +158,41 @@ class AddressFiles extends Component {
                   this.handleNestedChange(e, index);
                 }} />
               </div>
+              <div>
+                <input value={shipping.primary_address} name="primary_address" onChange={e => {
+                  this.handleNestedChange(e, index);
+                }} />
+              </div>
             </div>
           ) : (
+
               <Submit>
-                <div>{shipping.name}</div>
-                <div>{shipping.address}</div>
-                <div>{shipping.city}</div>
-                <div>{shipping.state}</div>
-                <div>{shipping.zip}</div>
+                <div className="divide">
+                  <div>{shipping.name}</div>
+                  <div>{shipping.address}</div>
+                  <div>{shipping.city}</div>
+                  <div>{shipping.state}</div>
+                  <div>{shipping.zip}</div>
+                  <div>{shipping.primary_address && 'PRIMARY ADDRESS'}</div>
+                </div>
               </Submit>
             )}
-
-          <NavLink to="/cart"><button className="addressbutton"
-            onClick={() => {
-              this.editAddress(shipping.id);
-            }}
-          >
-            Back to Cart
+          {/* <NavLink to="/cart">
+            <button className="addressbutton"
+              onClick={() => {
+                this.editAddress(shipping.id);
+              }}
+            >
+              Back to Cart
           </button>
-          </NavLink>
+
+          </NavLink> */}
 
           <div className="editbutton">
             <button className={this.state.isHidden ? "hide" : "edit"} onClick={this.submitAddress}> Edit Address </button>
-            <button className={this.state.isHidden ? "edit" : "hide"} onClick={this.submitAddress}> Save Address </button>
+            <button className={this.state.isHidden ? "edit" : "hide"} onClick={() => this.onClick(shipping.id)} > Save Address </button>
           </div>
+
           <button className="addressbutton"
             onClick={() => {
               this.deleteAddress(shipping.id);
@@ -168,6 +207,7 @@ class AddressFiles extends Component {
 
     return (
       <div>
+        <div> <Header /></div>
         <div>{this.props.user.auth0_id ? useraddresses : ""}</div>
         {/* <input onChange={this.handleInput}/> */}
       </div >

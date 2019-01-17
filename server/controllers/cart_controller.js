@@ -122,7 +122,7 @@ module.exports = {
 
   ///regarding address and form 
   postFormToCart: (req, res) => {
-    const { auth0_id, address, city, state, zip, name } = req.body;
+    const { auth0_id, address, city, state, zip, name, primary_address } = req.body;
     console.log("address req.body", req.body)
     const db = req.app.get("db");
     db.postAddress({
@@ -131,7 +131,9 @@ module.exports = {
       city,
       state,
       zip,
-      name
+      name,
+      primary_address
+
     })
       .then(address => {
         const posttheAddress = address[0];
@@ -159,9 +161,9 @@ module.exports = {
   },
   editAddress: (req, res) => {
     const { id } = req.params;
-    const { address, city, state, zip, name } = req.body;
+    const { address, city, state, zip, name, primary_address } = req.body;
     console.log("editAddress req.body", req.body, id);
-    var zipcode = 33967;
+    // var zipcode = 33967;
     const { auth0_id } = req.session.user;
     console.log("auth0_id ")
     const db = req.app.get("db");
@@ -171,8 +173,9 @@ module.exports = {
       address: address,
       city: city,
       state: state,
-      zipcode: zipcode,
-      name: name
+      zipcode: zip,
+      name: name,
+      primary_address: primary_address
     })
       .then((address) => {
         res.status(200).json(address);
