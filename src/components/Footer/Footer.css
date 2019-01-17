@@ -1,6 +1,4 @@
 .footer{
-    
-    
     background: rgba(149,218,212,1);
     background: -moz-linear-gradient(top, rgba(149,218,212,1) 0%, rgba(149,218,212,1) 12%, rgba(149,218,212,1) 13%, rgba(149,218,212,0.93) 40%, rgba(149,218,212,0.87) 62%, rgba(149,218,212,0.87) 71%, rgba(252,252,252,0.87) 91%, rgba(255,255,255,0.87) 100%);
     background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(149,218,212,1)), color-stop(12%, rgba(149,218,212,1)), color-stop(13%, rgba(149,218,212,1)), color-stop(40%, rgba(149,218,212,0.93)), color-stop(62%, rgba(149,218,212,0.87)), color-stop(71%, rgba(149,218,212,0.87)), color-stop(91%, rgba(252,252,252,0.87)), color-stop(100%, rgba(255,255,255,0.87)));
@@ -9,10 +7,27 @@
     background: -ms-linear-gradient(top, rgba(149,218,212,1) 0%, rgba(149,218,212,1) 12%, rgba(149,218,212,1) 13%, rgba(149,218,212,0.93) 40%, rgba(149,218,212,0.87) 62%, rgba(149,218,212,0.87) 71%, rgba(252,252,252,0.87) 91%, rgba(255,255,255,0.87) 100%);
     background: linear-gradient(to bottom, rgba(149,218,212,1) 0%, rgba(149,218,212,1) 12%, rgba(149,218,212,1) 13%, rgba(149,218,212,0.93) 40%, rgba(149,218,212,0.87) 62%, rgba(149,218,212,0.87) 71%, rgba(252,252,252,0.87) 91%, rgba(255,255,255,0.87) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#95dad4', endColorstr='#ffffff', GradientType=0 );
-    color: white;
+    color: black;
     width: 100%;
-    height: 200px;
+    height: 160px;
     position: relative;
-    bottom: -250px;
+    bottom: -20px;
+    overflow: hidden;
+}
+.bottomfoot{
+    margin-top: 30px;
+    padding: 20px;
+    margin: 0% auto;
+    letter-spacing: 2px;
+}
+.connect{
+    letter-spacing: 2px;
+    margin: 0% auto;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.connect div i{
+    margin: 10px;
 }
 

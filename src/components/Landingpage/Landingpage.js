@@ -4,6 +4,7 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { allProducts, removeCart, addCart, setUser } from "../../redux/reducer";
+import Cart from "../Cart/Cart";
 import Slick from "../Slick/Slick";
 
 
@@ -15,12 +16,7 @@ class Landingpage extends Component {
       name: [],
       price: null,
       filterArray: [],
-      filters: {
-        catproducts: ["food", "toys"],
-        dogproducts: ["food", "toys"],
-        cats: ["cat"],
-        dogs: ["dog"]
-      }
+
     };
   }
 
@@ -43,7 +39,7 @@ class Landingpage extends Component {
       price: price
 
     }
-    console.log("carttoDB", carttoDB, this.props.user)
+    // console.log("carttoDB", carttoDB, this.props.user)
 
     axios.post("/store/cart", carttoDB).then(response => {
       // console.log("response Post", response);
@@ -73,14 +69,20 @@ class Landingpage extends Component {
     console.log("productlist", productList)
     const listItems = this.props.productList.length ? this.props.productList.map(product => {
       return (
-        <div className="productBox">
-          <div className="flipinnerbox">
-            <div className="flipcardfront">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
               <img src={product.image} alt="productimage" />
+
+            </div>
+            <div class="flip-card-back">
+              <p>${product.price}</p>
+              <p>Architect & Engineer</p>
+              <p>We love that guy</p>
             </div>
           </div>
-          <div>{product.name}</div>
-          <div>${product.price}</div>
+          <div className="cardname">{product.name}</div>
+          <div className="price">${product.price}</div>
           <button
             onClick={() => {
               this.postProductToCart(product.id, product.price);
@@ -88,14 +90,11 @@ class Landingpage extends Component {
           >
             Add to Cart
           </button>
-          <div className="flipcardback">
-            <p></p>
-          </div>
-          {/* <NavLink to="/"> */} <div />
-          {/* </NavLink> */}
+
         </div>
-      );
-    }) : "loading"
+
+      )
+    }) : "loading";
     return (
 
       <div className="landingpage">
@@ -103,7 +102,7 @@ class Landingpage extends Component {
         <div className="allfilter">
           <label className="choose1">
             <select className="input1" onChange={(e) => { this.multiplefilter(e.target.value) }}>
-              <option className="input" value="Dogs">Dogs</option>
+              <option className="input" value="Dogs">Select Items for Dogs</option>
               <option className="input" value="dogfood" >Dog Food</option>
               <option className="input" value="dogtoys">Dog Toys</option>
             </select>
@@ -111,34 +110,56 @@ class Landingpage extends Component {
           <h3>Shop by Pet</h3>
           <label className="choose1">
             <select className="input1" onChange={(e) => { this.multiplefilter(e.target.value) }}>
-              <option className="input" value="Cats">Cats</option>
+              <option className="input" value="Cats">Select Items for Cats</option>
               <option className="input" value="catfood">Cat Food</option>
               <option className="input" value="cattoys"> Cat Toys</option>
 
             </select>
           </label>
         </div>
+        <div className='list-stuff'>
+          {!this.state.filterArray.length > 0 && <div className="product">{listItems}</div>}
 
-        {!this.state.filterArray.length > 0 && <div className="product">{listItems}</div>}
+          <div />
+          {this.state.filterArray.map(e => {
+            return (
+              <div className="products">
+                <div className="flip-card">
+                  <div className="flip-card-inner">
+                    <div className="flip-card-front">
+                      <img src={e.image} alt="eimage" />
+                    </div>
+                    <div className="flip-card-back">
+                      <p>${e.price}</p>
+                      <p>Architect & Engineer</p>
+                      <p>We love that guy</p>
+                    </div>
+                  </div>
+                  <div className="cardname">{e.name}</div>
+                  <div className="price">${e.price}</div>
+                  <button
+                    onClick={() => {
+                      this.postProductToCart(e.id, e.price);
+                    }}
+                  >
+                    Add to Cart
+          </button>
 
-        <div />
-        {this.state.filterArray.map(e => {
-          return (<div className="productBox">
-            <div> <img src={e.image} alt="eimage" /></div>
-            <div>{e.name}</div>
-            <div>${e.price}</div>
-            <button
-              onClick={() => {
-                this.postProductToCart(e.id, e.price);
-              }}
-            >Add to Cart</button>
+                </div>
 
-          </div>
+              </div>
 
-          )
-        })}
+            )
+          })}
 
-      </div >
+        </div >
+
+
+      </div>
+
+
+      ///here
+
 
     );
   }

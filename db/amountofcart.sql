@@ -1,0 +1,1 @@
+select sum(round((price), 2)) from cart_items

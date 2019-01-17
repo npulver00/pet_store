@@ -1,7 +1,7 @@
 
 const INITIALSTATE = {
     productList: [],
-    user: null,
+    user: [],
     name: ""
 
 

@@ -49,6 +49,7 @@ app.delete('/store/cart/:product_id/:quantity', cart_controller.deleteFromCart);
 app.get('/store/cart/:auth0_id', cart_controller.getProductsInCart);
 app.post('/cart/address', cart_controller.postFormToCart);
 app.get('/store/cart', cart_controller.totalFromCart)
+app.get('/store/amount', cart_controller.amountFromCart)
 
 //stripe
 app.post('/stripe', stripe_controller.stripeCheckout);

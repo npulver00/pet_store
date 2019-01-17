@@ -3,18 +3,41 @@ import "./AddressFiles.css";
 import axios from "axios";
 import { connect } from "react-redux";
 import { inputAddress } from "../../redux/reducer";
-import { EventEmitter } from "events";
+import styled from 'styled-components';
+
+const AddressWrapper = styled.div`
+background-color: #DCB239;
+border: solid black 2px;
+padding: 50px;
+height: 150px;
+width: 300px;
+display: inline-block;
+margin: 20px;
+text-align: center;
+border-radius: 10px;
+margin-left: 100px;
+letter-spacing: 1px;
+font-size: 20px;
+color: black;
+font-weight: 500;
+`;
+
+
+
+
+const Submit = styled.div`
+  margin: 10px;
+  height: 100px;
+`;
+
+
+
 
 class AddressFiles extends Component {
   constructor(props) {
     super(props);
     this.state = {
       addresses: [],
-      // address: "",
-      // city: "",
-      // state: "",
-      // zip: "",
-      // name: "",
       isHidden: false,
 
     };
@@ -78,7 +101,7 @@ class AddressFiles extends Component {
     console.log("this.state", this.state);
     const useraddresses = addresses.map((shipping, index) => {
       return (
-        <div className="files">
+        <AddressWrapper>
           {this.state.isHidden ? (
             <div>
               <div>
@@ -108,14 +131,15 @@ class AddressFiles extends Component {
               </div>
             </div>
           ) : (
-              <div>
+              <Submit>
                 <div>{shipping.name}</div>
                 <div>{shipping.address}</div>
                 <div>{shipping.city}</div>
                 <div>{shipping.state}</div>
                 <div>{shipping.zip}</div>
-              </div>
+              </Submit>
             )}
+
           <button
             onClick={() => {
               this.editAddress(shipping.id);
@@ -133,7 +157,8 @@ class AddressFiles extends Component {
           <div>
             <button onClick={this.submitAddress}>Submit Change</button>
           </div>
-        </div>
+
+        </AddressWrapper >
       );
     });
 
@@ -141,7 +166,7 @@ class AddressFiles extends Component {
       <div>
         <div>{this.props.user.auth0_id ? useraddresses : ""}</div>
         {/* <input onChange={this.handleInput}/> */}
-      </div>
+      </div >
     );
   }
 }

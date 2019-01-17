@@ -83,6 +83,14 @@ module.exports = {
 
   },
 
+  amountFromCart: (req, res) => {
+    const db = req.app.get("db");
+    db.amountofcart().then(response => {
+      console.log("amount!", response)
+      res.status(200).json(response)
+    })
+  },
+
 
   // deleteFromCart: (req, res) => {
   //   const { product_id } = req.params

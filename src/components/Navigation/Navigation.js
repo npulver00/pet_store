@@ -32,7 +32,10 @@ const Button = styled.button`
     border-radius: 20px 5px 20px 5px;
     margin: 10px 20px 10px 0;
     background-color: #DF744A;
-    padding: 5px 30px;
+    padding-top: 5px 
+    padding-bottom: 5px;
+    padding-left: 30px;
+    padding-right:30px;
     text-align: center;
     &:hover { background-color:#DCB239;
         border: 1px dotted white;
@@ -41,19 +44,6 @@ const Button = styled.button`
     box-shadow: 2px 2px 3px white;
 `;
 
-const UserInfo = styled.div`
-
-    display: inline-block;
-    position: absolute;
-    right: 80px;
-    top: 20px;
-    bottom: 10px;
-`;
-
-const UserButton = styled(Button)`
-    display: inline-block;
-    margin-right: 10px;
-`;
 
 const TitlePage = styled.h1`
 width: 70%;
@@ -72,7 +62,7 @@ class Navigation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: null,
+            user: this.props.user
 
         };
     }
@@ -93,10 +83,14 @@ class Navigation extends Component {
     }
     logout = () => {
         axios.post('/auth/logout').then(() => {
-            this.props.setUser(null)
-
+            this.setState({
+                user: null
+            });
+            this.props.setUser(null);
         })
-        console.log(this.props.setUser({ user: null }))
+
+
+        // console.log(this.props.setUser({ user: null }))
     }
 
 
@@ -118,16 +112,17 @@ class Navigation extends Component {
                 </div>
                 <div className="navbar">
                     <NavWrapper>
-                        <div><NavLink activeClassName="active" exact to="/" ><Button>Home</Button></NavLink></div>
-
-                        <div><NavLink to="/products"><Button>Dogs</Button></NavLink></div>
-                        <div><NavLink to="/products"><Button>Cats</Button></NavLink></div>
-                        <div><NavLink to="cart"><Button>Cart</Button></NavLink></div>
+                        <div><NavLink activeClassName="active" exact to="/" ><Button><i class="fas fa-home"></i></Button></NavLink></div>
+                        <div><NavLink to="cart"><Button><i class="fas fa-shopping-cart"></i></Button></NavLink></div>
                     </NavWrapper>
-                    <UserInfo>
-                        <UserButton onClick={this.login}>Login</UserButton>
-                        <UserButton onClick={this.logout}>Logout</UserButton>
-                    </UserInfo>
+                    {/* <UserInfo>}
+                     <UserButton onClick={this.login}>Login</UserButton>
+                        <UserButton onClick={this.logout}>Logout</UserButton> 
+                     </UserInfo> */}
+                    <div className="userinfo">
+                        <button className={this.props.user ? "hide" : "login"} onClick={this.login}><i class="fas fa-dog">..</i>Login</button>
+                        <button className={this.props.user ? "login" : "hide"} onClick={this.logout}><i class="fas fa-cat">..</i>Logout</button>
+                    </div>
                 </div>
             </div>
         );

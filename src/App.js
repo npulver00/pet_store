@@ -24,7 +24,7 @@ class App extends Component {
         <div className="contentWrapper">
           <Switch>
             <Route path="/cart" component={Cart} />
-            <Route path="/products" component={Products} />
+            {/* <Route path="/products" component={Products} /> */}
             <Route path="/form" component={Form} />
             <Route path="/addresshistory" component={AddressFiles} />
             <Route path="/" component={Landingpage} />

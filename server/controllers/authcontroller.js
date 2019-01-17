@@ -69,7 +69,7 @@ module.exports = {
   },
 
   logout: (req, res) => {
-    res.session.destroy();
+    req.session.destroy();
     res.send("Logged out");
   }
 };
