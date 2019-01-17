@@ -1,7 +1,67 @@
+
+
 .form{
-    /* background-color: green; */
-    color: purple;
-    padding: 200px;
-    font-size: 45px;
+  
+    background-color:  #FEDCD2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0% auto;
+    color: #DF744A;
+    height: 350px;
+    width: 800px;
+    font-size: 35px;
+  border: solid #DF744A 1px;
+  font-weight: bold;
+ 
+}
+
+.form input{
+    background-color:  #BFD8D2;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    margin: 0% auto;
+    color: #DF744A;
+    width: 200px;
+    height:20px;
+    text-align: center;
+      border: solid #DF744A 1px;
 
 }
+.form h2{
+    color: #DF744A;
+    font-size: 55px;
+    margin-bottom: 40px;
+
+}
+
+.form  .name{  
+    margin-left: 50px;
+}
+.form .address{
+    margin: 7px;
+}
+.form .city{
+    margin-left: 65px;
+}
+
+.form .state{
+    margin-left: 52px;
+}
+.form .zip{
+    margin-left: 75px;
+}
+.formbutton{
+    color: white;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    margin: 0 auto;
+    background-color: #DF744A;
+    text-align: center;
+    box-shadow: 2px 2px 3px white;
+}
+
+
+

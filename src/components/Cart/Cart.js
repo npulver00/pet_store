@@ -127,7 +127,8 @@ class Cart extends Component {
                 : <div>
                     <div className="cart">{this.props.user.auth0_id ? cartItems : alert("~PLEASE LOGIN FIRST~")}</div>
 
-
+                    <div className="cartbutton"><NavLink to="/form"><button>Add Shipping address</button></NavLink></div>
+                    <div className="cartbutton"><NavLink to="/addresshistory"><button>Address history</button></NavLink></div>
                     <div className="totalbox">
                         <div>Amount: ${this.state.amount}</div>
                         <div>Tax: ${(this.state.total - this.state.amount).toFixed(2)} </div>
@@ -143,8 +144,7 @@ class Cart extends Component {
                             stripeKey={process.env.REACT_APP_STRIPE_KEY}
                         /></div>
                     </div>
-                    <div><NavLink to="/form"><button>Shipping address</button></NavLink></div>
-                    <div><NavLink to="/addresshistory"><button>Address history</button></NavLink></div>
+
                 </div>
 
         );

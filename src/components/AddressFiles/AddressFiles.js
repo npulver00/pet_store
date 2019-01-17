@@ -4,12 +4,13 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { inputAddress } from "../../redux/reducer";
 import styled from 'styled-components';
+import { NavLink } from "react-router-dom";
 
 const AddressWrapper = styled.div`
 background-color: #DCB239;
 border: solid black 2px;
 padding: 50px;
-height: 150px;
+height: 200px;
 width: 300px;
 display: inline-block;
 margin: 20px;
@@ -103,7 +104,7 @@ class AddressFiles extends Component {
       return (
         <AddressWrapper>
           {this.state.isHidden ? (
-            <div>
+            <div className="inputAd">
               <div>
                 <input value={shipping.name} name="name" onChange={e => {
                   this.handleNestedChange(e, index);
@@ -140,23 +141,26 @@ class AddressFiles extends Component {
               </Submit>
             )}
 
-          <button
+          <NavLink to="/cart"><button className="addressbutton"
             onClick={() => {
               this.editAddress(shipping.id);
             }}
           >
-            Edit
+            Back to Cart
           </button>
-          <button
+          </NavLink>
+
+          <div className="editbutton">
+            <button className={this.state.isHidden ? "hide" : "edit"} onClick={this.submitAddress}> Edit Address </button>
+            <button className={this.state.isHidden ? "edit" : "hide"} onClick={this.submitAddress}> Save Address </button>
+          </div>
+          <button className="addressbutton"
             onClick={() => {
               this.deleteAddress(shipping.id);
             }}
           >
             Delete
           </button>
-          <div>
-            <button onClick={this.submitAddress}>Submit Change</button>
-          </div>
 
         </AddressWrapper >
       );
