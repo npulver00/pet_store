@@ -76,9 +76,8 @@ class Landingpage extends Component {
 
             </div>
             <div class="flip-card-back">
-              <p>${product.price}</p>
-              <p>Architect & Engineer</p>
-              <p>We love that guy</p>
+              <div className="backinfo">{product.feature}</div>
+
             </div>
           </div>
           <div className="cardname">{product.name}</div>
@@ -130,9 +129,8 @@ class Landingpage extends Component {
                       <img src={e.image} alt="eimage" />
                     </div>
                     <div className="flip-card-back">
-                      <p>${e.price}</p>
-                      <p>Architect & Engineer</p>
-                      <p>We love that guy</p>
+                      <div className="backinfo">{e.feature}</div>
+
                     </div>
                   </div>
                   <div className="cardname">{e.name}</div>

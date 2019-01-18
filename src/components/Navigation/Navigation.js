@@ -14,7 +14,11 @@ const Logo = styled.img`
     width: 120px;
     margin-top: 8px;
     z-index: 9999;
+    @media(max-width: 700px){
+        display:none       
+    }
 `;
+
 
 const NavWrapper = styled.div`
     display: flex;
@@ -22,7 +26,6 @@ const NavWrapper = styled.div`
     width: 100%;
     margin: 0 auto;
     padding: 90px;
-   
 `;
 
 const Button = styled.button`
@@ -42,6 +45,10 @@ const Button = styled.button`
     }
     float: left;
     box-shadow: 2px 2px 3px white;
+    @media(max-width: 700px){
+        padding: 15px;  
+        margin: 75px;  
+    }
 `;
 
 
@@ -52,28 +59,23 @@ margin: 0 auto;
 margin-top: -90px;
 font-family: "Pacifico", cursive;
 font-size: 50px;
-
+@media (max-width: 700px){
+    font-size: 22px;
+    margin-top: 40px;
+}
 `;
-
-
-
 
 class Navigation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: this.props.user
-
+            user: this.props.user,
+            toggle: false
         };
     }
     componentDidMount() {
         axios.get("/auth/user-data").then(response => {
-            // console.log("response in Navigation", response)
             this.props.setUser(response.data);
-            // this.setState({
-            //     user:response.data.user
-            // })
-            // console.log(" response.data in Navigation", this.props.setUser(response.data))
         });
     }
 
@@ -88,40 +90,59 @@ class Navigation extends Component {
             });
             this.props.setUser(null);
         })
+    }
+
+    toggler = () => {
+        this.setState({
+            toggle: !this.state.toggle
+        })
 
 
-        // console.log(this.props.setUser({ user: null }))
     }
 
 
 
 
     render() {
+        console.log("toggler", this.state.toggle)
         console.log("this.props.user!!!", this.props)
         return (
             <div>
                 <div className="topNav">
-                    <Logo src={pic}></Logo>
-                    <TitlePage>Stella & Toby's Pet World</TitlePage>
+                    <div><Logo src={pic}></Logo></div>
+                    <div className="title"><TitlePage>Stella & Toby's Pet World</TitlePage></div>
+                    <div className="user"> {this.props.user ? this.props.user.username : ""} </div>
                     <div className="theuserpicture">
-                        <div className="user"> {this.props.user ? this.props.user.username : ""} </div>
                         <img className="userpicture" key="picture" src={this.props.user ? this.props.user.picture : ""} />
                     </div>
 
-
                 </div>
-                <div className="navbar">
-                    <NavWrapper>
-                        <div><NavLink activeClassName="active" exact to="/" ><Button><i class="fas fa-home"></i></Button></NavLink></div>
-                        <div><NavLink to="cart"><Button><i class="fas fa-shopping-cart"></i></Button></NavLink></div>
-                    </NavWrapper>
-                    {/* <UserInfo>}
-                     <UserButton onClick={this.login}>Login</UserButton>
-                        <UserButton onClick={this.logout}>Logout</UserButton> 
-                     </UserInfo> */}
-                    <div className="userinfo">
-                        <button className={this.props.user ? "hide" : "login"} onClick={this.login}><i class="fas fa-dog">..</i>Login</button>
-                        <button className={this.props.user ? "login" : "hide"} onClick={this.logout}><i class="fas fa-cat">..</i>Logout</button>
+                <div className="showNavbar">
+                    <div className="navbar">
+                        <NavWrapper>
+                            <div><NavLink activeClassName="active" exact to="/" ><Button><i class="fas fa-home"></i></Button></NavLink></div>
+                            <div><NavLink to="/store_cart"><Button><i class="fas fa-shopping-cart"></i></Button></NavLink></div>
+                        </NavWrapper>
+                        <div className="userinfo">
+                            <button className={this.props.user ? "hide" : "login"} onClick={this.login}><i class="fas fa-cat">..</i>Login</button>
+                            <button className={this.props.user ? "login" : "hide"} onClick={this.logout}><i class="fas fa-dog">..</i>Logout</button>
+                        </div>
+                    </div>
+                </div>
+                <div className="Dropdownmenu">
+
+                    <div className="menuButton"><button onClick={this.toggler}><i class="fas fa-bars"></i></button></div>
+                    <div className={this.state.toggle ? "showDropdown" : "hideDropdown"}>
+
+                        <ul >
+                            <li> <NavLink to="/">Home</NavLink></li>
+                            <li> <NavLink to="/store_cart">Cart</NavLink></li>
+                            <li> <NavLink to="/addresshistory">Address History</NavLink></li>
+                            <li> <NavLink to="/Form">Addess Form</NavLink></li>
+                            <li className={this.props.user ? "hide" : "login"} onClick={this.login}><i class="fas fa-dog">..</i>Login</li>
+                            <li className={this.props.user ? "login" : "hide"} onClick={this.logout}><i class="fas fa-cat">..</i>Logout</li>
+                        </ul>
+
                     </div>
                 </div>
             </div>

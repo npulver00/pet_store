@@ -145,12 +145,12 @@ class Cart extends Component {
                     <div><img src={item.image} alt="photo" /></div>
                     <div>Name:{item.name}</div>
                     <div>Quantity:{item.quantity}</div>
-                    <button className="qty" onClick={() => { this.postProductToCart(item.product_id, item.productprice) }}>+</button>
-                    <button className="qty" onClick={() => this.deleteProductfromCart(item.product_id, item.quantity)}>-</button>
+                    <button className="qty" onClick={() => { this.postProductToCart(item.product_id, item.productprice) }}><i class="fas fa-arrow-up"></i></button>
+                    <button className="qty" onClick={() => this.deleteProductfromCart(item.product_id, item.quantity)}><i class="fas fa-arrow-down"></i></button>
                     <div>Price: ${item.totalprice}</div>
-                    <button className="deleteButton" onClick={() => this.deleteProductfromCart(item.product_id, item.quantity)}>Delete</button>
+                    <button className="deleteButton" onClick={() => this.deleteProductfromCart(item.product_id, item.quantity)}><i class="fas fa-trash-alt"></i></button>
 
-                </div>
+                </div >
             )
         })
         console.log("cartitems0000", this.state.checkoutCart)
@@ -158,7 +158,7 @@ class Cart extends Component {
 
 
             !this.props.user.auth0_id ?
-                <div>{this.props.history.push("/")}{alert("~PLEASE LOGIN FIRST~")} </div>
+                <div> {this.props.history.push("/")}{alert("~PLEASE LOGIN FIRST~")} </div >
                 // <Redirect to="/" /> 
                 : <div>
                     <div className="cart">{this.props.user.auth0_id ? cartItems : alert("~PLEASE LOGIN FIRST~")}</div>

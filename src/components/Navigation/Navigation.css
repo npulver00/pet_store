@@ -95,16 +95,87 @@ header{
   margin: -25px;
   margin-left: 1px;
   
+  
 
 }
 .user{
-  color:#DF744A;;
+  color:#DF744A;
   font-size: 25px;
   width: 269px;
   height: 50px;
-
   position: fixed;
   top: 100px;
   right: 75px;
   text-shadow: 2px 2px 2px white;
 }
+
+.hideDropdown{
+  display: none;
+}
+.menuButton{
+  display: none;
+}
+
+@media only screen and (max-width: 700px) {
+  .topNav { max-width: 415px}
+  .userpicture{display: none}
+  .user{display: none;
+        
+        }
+  .navbar{ max-width: 415px;}
+  .userinfo button{max-width: 375px;
+            width: 95px;
+            text-align: center;
+            margin: 55px
+             
+        
+          }
+ @media only screen and (max-width:415px){
+
+  .menuButton{
+    display: flex;
+    background: #DF744A;
+    width: 100vw;
+    margin: 0% auto;
+    height: 25px;
+  }
+  .showDropdown{ 
+    display:flex;
+    flex-direction: column;
+    background-color:#DF744A;
+    z-index: 999;
+    position: absolute;
+    transform: translate(0, 0px);
+    transition: 2s;
+    width: 100vw;
+   
+
+    
+  }
+  
+  .showDropdown ul li{
+    border: solid black 1px;
+    width: 100vw;
+    height: 35px;
+    font-size: 25px;
+    margin: 0 auto;
+    text-decoration: none;
+  }
+
+  .showNavbar{ display: none;
+
+  }
+
+
+  /* .hide{
+    transform: translate(0, -400px);
+  } */
+}
+
+
+   
+
+
+  
+
+} 

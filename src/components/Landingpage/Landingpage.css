@@ -38,6 +38,7 @@ body{
   justify-items: center;
   align-items: center;
   overflow: visible;
+  
 
 }
 .allfilter > h3{
@@ -89,6 +90,7 @@ body{
   height: 30px;
   border-radius: 10px;
   margin: 0 auto;
+
   
  
 
@@ -131,6 +133,8 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  margin: 10px;
 }
 
 .products{
@@ -167,6 +171,8 @@ body{
   padding-bottom: 2px;
   margin: 0% auto;
   text-align: center;
+  color:  #DF744A;
+  font-weight: bolder;
 }
 .flip-card button{
   margin: 0 auto;
@@ -187,6 +193,8 @@ body{
  display: flex;
  justify-content: center;
  align-items: center;
+ color:  #DF744A;
+ font-weight: bold;
 }
 
 
@@ -233,6 +241,8 @@ body{
   background-color: #ffffff;
   color: black;
   border-radius: 10px;
+  border: solid #BFD8D2 3px;
+  box-shadow: 1px 1px 2px 2px #BFD8D2
 }
 
 /* Style the back side */
@@ -240,8 +250,75 @@ body{
   /* background-color: dodgerblue; */
   color: black;
   transform: rotateY(180deg);
-  background: rgba(255,255,255,1);
+  border: solid #BFD8D2 3px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px 2px #BFD8D2
+  /* background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,1) 1%, rgba(191,216,210,1) 50%, rgba(255,255,255,0.8866508569610253) 99%); */
+  /* background: rgba(255,255,255,1);
   background: -moz-linear-gradient(top, rgba(255,255,255,1) 14%, rgba(254,220,210,1) 30%, rgba(254,220,210,1) 31%, rgba(254,220,210,0.65) 53%, rgba(254,220,210,0.48) 64%, rgba(255,241,238,0.3) 75%, rgba(255,255,255,0.3) 82%, rgba(255,255,255,0.3) 100%);
   background: -webkit-gradient(left top, left bottom, color-stop(14%, rgba(255,255,255,1)), color-stop(30%, rgba(254,220,210,1)), color-stop(31%, rgba(254,220,210,1)), color-stop(53%, rgba(254,220,210,0.65)), color-stop(64%, rgba(254,220,210,0.48)), color-stop(75%, rgba(255,241,238,0.3)), color-stop(82%, rgba(255,255,255,0.3)), color-stop(100%, rgba(255,255,255,0.3)));
-  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 14%, rgba(254,220,210,1) 30%, rgba(254,220,210,1) 31%, rgba(254,220,210,0.65) 53%, rgba(254,220,210,0.48) 64%, rgba(255,241,238,0.3) 75%, rgba(255,255,255,0.3) 82%, rgba(255,255,255,0.3) 100%);
+  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 14%, rgba(254,220,210,1) 30%, rgba(254,220,210,1) 31%, rgba(254,220,210,0.65) 53%, rgba(254,220,210,0.48) 64%, rgba(255,241,238,0.3) 75%, rgba(255,255,255,0.3) 82%, rgba(255,255,255,0.3) 100%); */
+}
+
+.backinfo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height:90%;
+  color:  #DF744A;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 10px;
+  
+}
+
+
+@media only screen and (max-width: 700px){
+  .allfilter{
+    width: 100vw;
+    margin: 0% auto;
+   
+
+  }
+  .choose1{
+    width: 50px;
+    margin: 0% auto;
+   
+
+
+  }
+  .input1{
+    width: 55px;
+    margin: 0% auto;
+  }
+  .input{
+    width: 10px;
+    position: absolute;
+    transform: translate(0, 0px);
+    transition: 2s;
+    padding-right: 10px
+  }
+  .allfilter h3{
+    font-size: 20px;
+    transition:  translate(0, 50px);
+    
+  }
+  .slick1{
+   display: none
+  }
+  .list-stuff{
+  width: 200px;
+    margin: 0% auto;
+  }
+  .flip-card-front{
+    height: 100px;
+  }
+  .cardname{
+    width: 200px;
+  }
+  .list-stuff img{
+    width: 100px;
+  }
 }
