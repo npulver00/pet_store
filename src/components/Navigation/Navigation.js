@@ -46,8 +46,9 @@ const Button = styled.button`
     float: left;
     box-shadow: 2px 2px 3px white;
     @media(max-width: 700px){
-        padding: 15px;  
-        margin: 75px;  
+        padding: 10px;  
+        margin: 65px;  
+      
     }
 `;
 

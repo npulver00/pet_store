@@ -248,6 +248,7 @@ body{
 /* Style the back side */
 .flip-card-back {
   /* background-color: dodgerblue; */
+  background-color: #BFD8D2;
   color: black;
   transform: rotateY(180deg);
   border: solid #BFD8D2 3px;
@@ -275,16 +276,17 @@ body{
 }
 
 
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 411px){
   .landingpage{
     margin-top: -100px;
   }
   .allfilter{
     width: 100vw;
     margin: 0% auto;
+   
   }
   .choose1{
-    width: 50px;
+    width: 52px;
     margin: 0% auto;
   }
   .input1{
