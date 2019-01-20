@@ -38,3 +38,41 @@
     color: black;
     font-weight: bold;
 }
+
+@media screen and (max-width:411px){
+    .divide{
+        margin: 0% auto;
+        
+        width: 70vw;
+        font-display: 5px;
+    }
+    .editbutton button{
+        margin: 0% auto;
+        font-display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 30px;
+        width: 70vw;
+        margin-top: 15px;
+    
+
+    }
+    .addressbutton{
+        margin: 0% auto;
+        font-display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 30px;
+        width: 70vw;
+        margin-top: 10px;
+        
+    }
+    .divide div{
+        margin: 0% auto;
+        width: 40vw;
+        
+    }
+    
+    
+    
+}

@@ -39,7 +39,6 @@ function allProducts(items) {
 }
 
 function setUser(user) {
-    console.log("user!!!!f!!", user)
     return {
         type: SET_USER,
         payload: user

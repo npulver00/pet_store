@@ -158,3 +158,81 @@ h3{
     margin: 4px;
     font-weight: bold;
 }
+
+@media screen and (max-width: 411px){
+    .cart{
+        margin: 0% auto;
+    }
+    .cartCard{
+       font-size: 12px;
+       display: flex;
+       justify-content: center;
+       align-content: center;
+       flex-direction: column;
+      
+       margin: 0% auto;
+    }
+    .cartCard div:first-child{
+       margin: 0 auto;
+        
+    }
+    .cartCard div:nth-child(2){
+        display: flex;
+        justify-content: center;
+        width: 80vw;
+         
+     }
+     .cartCard div:nth-child(3){
+        display: flex;
+        justify-content: center;
+        width: 80vw;
+         
+     }
+     .cartCard div:nth-child(6){
+        display: flex;
+        justify-content: center;
+        width: 80vw;
+         
+     }
+    
+     .cartCard button{
+        display: flex;
+        justify-content: center;
+        width: 90vw;
+        border: solid black 2px;
+        margin: 0% auto;
+        margin: 2px;
+
+         
+     }
+     .primaryAddCart{
+        display: flex;
+        justify-content: center;
+        width: 60vw;
+        border: solid black 2px;
+        margin: 0% auto;
+        font-size: 20px;
+     }
+     .totalbox{
+        display: flex;
+        justify-content: center;
+        width: 40vw;
+        border: solid black 2px;
+        margin: 0% auto;
+     
+     }
+     .total{
+         font-size: 12px;
+     }
+     .cartbutton button{
+        display: flex;
+        justify-content: center;
+        width: 35vw;
+        font-size: 12px;
+       
+        margin: 0% auto;
+
+     }
+     
+    
+}

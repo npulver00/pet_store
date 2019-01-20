@@ -28,9 +28,9 @@ class Slick extends Component {
         return (
             <Slider {...settings}>
 
-                <div className="picimage"><img src={picture2} /> <img src={picture1} /><img src={picture3} /></div>
-                <div className="picimage"><img src={picture4} /><img src={picture6} /><img src={picture5} /></div>
-                <div className="picimage"><img src={picture7} /><img src={picture8} /><img src={picture9} /></div>
+                <div className="picimage"><img src={picture2} alt="" /> <img src={picture1} alt="" /><img src={picture3} alt="" /></div>
+                <div className="picimage"><img src={picture4} alt="" /><img src={picture6} alt="" /><img src={picture5} alt="" /></div>
+                <div className="picimage"><img src={picture7} alt="" /><img src={picture8} alt="" /><img src={picture9} alt="" /></div>
 
 
 

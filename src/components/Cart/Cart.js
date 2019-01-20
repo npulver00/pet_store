@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import "./Cart.css";
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from "react-router-dom";
-import { Redirect } from "react-router";
 import axios from 'axios';
 import { inputAddress } from "../../redux/reducer";
 // import Stripecheckout from "../Stripecheckout/Stripecheckout";
@@ -42,12 +41,7 @@ class Cart extends Component {
     }
     deleteProductfromCart = (product_id, quantity) => {
 
-        // console.log("id front", product_id)
         axios.delete(`/store/cart/${product_id}/${quantity}`).then(response => {
-            // console.log("Delete Cart Front", response)
-            // this.setState({
-            //     checkoutCart: response.data
-            // })
             this.getProductInCart()
             this.amountfromcart()
             this.totalfromcart()
@@ -56,27 +50,28 @@ class Cart extends Component {
     totalfromcart = () => {
 
         axios.get('/store/cart').then(response => {
-            // console.log("totalcart", response)
             this.setState({
                 total: response.data[0].sum
             })
+            console.log("totalfromcart", this.state.total)
+            console.log("totalfromcart", response)
         })
     }
 
     amountfromcart = () => {
 
         axios.get('/store/amount').then(response => {
-            // console.log("amountcart", response)
             this.setState({
                 amount: response.data[0].sum
             })
+            console.log("amount", this.state.amount)
         })
     }
     ontoken = (token) => {
         const { total } = this.state
-        axios.post("/stripe", { token, total })
-            .then(response => alert("Successful payment"))
+        axios.post("/stripe", { token, total }).then(response => alert("Successful payment"))
     }
+
     postProductToCart = (product_id, price) => {
         const carttoDB = {
             auth0_id: this.props.user.auth0_id,
@@ -84,13 +79,9 @@ class Cart extends Component {
             price: price
 
         }
-        // console.log("carttooooo!!!", this.props.user)
-        console.log("cart***", carttoDB)
 
 
         axios.post("/store/cart", carttoDB).then(response => {
-            // console.log("response Post", response);
-            // console.log("response Post Data", response.data);
             console.log('item successfully added to db Natalie', response)
             this.getProductInCart()
             this.amountfromcart()
@@ -101,27 +92,19 @@ class Cart extends Component {
 
     getUsersAddressestoCart = () => {
         axios.get('/store/addresshistory').then(response => {
-            console.log("primaryAddress", response);
             this.setState({
                 UserAddress: response.data
             });
-            console.log("stateprimary", response.data)
-            console.log("stateprim000", this.state.primaryAddress)
             this.postprimarytocart()
         });
     };
 
     postprimarytocart = () => {
-
         const { UserAddress } = this.state
-        console.log("primaryAddress99999", UserAddress)
         UserAddress.filter(e => {
-            console.log("jjjjjj", e)
             if (e.primary_address) {
-                console.log("e", e)
                 let newprimary = this.state.primaryAddress.slice()
                 newprimary.push(e)
-
                 this.setState({
                     primaryAddress: newprimary
                 })
@@ -132,17 +115,14 @@ class Cart extends Component {
 
 
     render() {
-        console.log("checkoutCart!!", this.state.checkoutCart)
-        console.log("SamHelp!", this.state.primaryAddress)
 
         const { total } = this.state
+        console.log("total", total)
 
         const cartItems = this.state.checkoutCart.map(item => {
-            console.log("cartItems", item)
-
             return (
                 <div className="cartCard">
-                    <div><img src={item.image} alt="photo" /></div>
+                    <div><img src={item.image} key="photo" alt="" /></div>
                     <div>Name:{item.name}</div>
                     <div>Quantity:{item.quantity}</div>
                     <button className="qty" onClick={() => { this.postProductToCart(item.product_id, item.productprice) }}><i class="fas fa-arrow-up"></i></button>
@@ -153,13 +133,12 @@ class Cart extends Component {
                 </div >
             )
         })
-        console.log("cartitems0000", this.state.checkoutCart)
+
         return (
 
 
             !this.props.user.auth0_id ?
                 <div> {this.props.history.push("/")}{alert("~PLEASE LOGIN FIRST~")} </div >
-                // <Redirect to="/" /> 
                 : <div>
                     <div className="cart">{this.props.user.auth0_id ? cartItems : alert("~PLEASE LOGIN FIRST~")}</div>
 

@@ -5,11 +5,13 @@ import "./Header.css"
 
 
 const Title = styled.h2`
-color: green;
 margin: 0 auto;
 height: 100px;
 width: 100%;
 text-align: center;
+@media:(max-width:411px){
+    display:none
+}
 
 :`
 

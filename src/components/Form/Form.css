@@ -79,5 +79,43 @@
     height: 100px;
 }
 
+@media screen and (max-width: 411px){
+    .form{
+        width: 90vw;
+        font-size: 25px;
+        padding: 5px;
+        height: 300px;
+    }
+    
+    .form h2{
+        font-size: 35px;
+        height: 20px;
+
+    }
+    .form  .name{  
+        margin-left: 49px;
+    }
+   
+    .form .address{
+        margin-left: 18px;
+     
+    }
+    .form .city{
+        margin-left: 59px;
+    }
+    
+    .form .state{
+        margin-left: 51px;
+        
+    }
+    .form .zip{
+        margin-left: 68px;
+    }
+    .form .primary{
+        margin-left: 20px;
+        
+    }
+}
+
 
 

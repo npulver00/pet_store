@@ -276,22 +276,21 @@ body{
 
 
 @media only screen and (max-width: 700px){
+  .landingpage{
+    margin-top: -100px;
+  }
   .allfilter{
     width: 100vw;
     margin: 0% auto;
-   
-
   }
   .choose1{
     width: 50px;
     margin: 0% auto;
-   
-
-
   }
   .input1{
-    width: 55px;
+    width: 60px;
     margin: 0% auto;
+    font-size: 15px;
   }
   .input{
     width: 10px;
@@ -309,11 +308,20 @@ body{
    display: none
   }
   .list-stuff{
-  width: 200px;
+    width: 200px;
     margin: 0% auto;
-  }
+    font-display: flex;
+    justify-content: center;
+    flex-direction: column;
+  } 
   .flip-card-front{
     height: 100px;
+  }
+  .flip-card-back{
+    height: 150px;
+  }
+  .flip-card-inner{
+    height: 90px;
   }
   .cardname{
     width: 200px;

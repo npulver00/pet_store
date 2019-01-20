@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import "./Landingpage.css";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { allProducts, removeCart, addCart, setUser } from "../../redux/reducer";
-import Cart from "../Cart/Cart";
 import Slick from "../Slick/Slick";
 
 
@@ -61,21 +59,14 @@ class Landingpage extends Component {
   }
 
   render() {
-    const { productList } = this.props;
-    console.log("goodbye", this.props)
-    console.log("help!!!", this.state.filterArray)
-    // const {cart}= this.props.user;
-
-    console.log("productlist", productList)
     const listItems = this.props.productList.length ? this.props.productList.map(product => {
       return (
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <img src={product.image} alt="productimage" />
-
+        <div className="flip-card" key="caard">
+          <div className="flip-card-inner" key="inner">
+            <div className="flip-card-front">
+              <img src={product.image} alt="productimage" key="front" />
             </div>
-            <div class="flip-card-back">
+            <div className="flip-card-back" key="back">
               <div className="backinfo">{product.feature}</div>
 
             </div>
@@ -96,12 +87,12 @@ class Landingpage extends Component {
     }) : "loading";
     return (
 
-      <div className="landingpage">
+      <div className="landingpage" key="page">
         <div className="slick1"><Slick /></div>
         <div className="allfilter">
           <label className="choose1">
             <select className="input1" onChange={(e) => { this.multiplefilter(e.target.value) }}>
-              <option className="input" value="Dogs">Select Items for Dogs</option>
+              <option className="input" value="Dogs">Dogs: Select Items</option>
               <option className="input" value="dogfood" >Dog Food</option>
               <option className="input" value="dogtoys">Dog Toys</option>
             </select>
@@ -109,14 +100,14 @@ class Landingpage extends Component {
           <h3>Shop by Pet</h3>
           <label className="choose1">
             <select className="input1" onChange={(e) => { this.multiplefilter(e.target.value) }}>
-              <option className="input" value="Cats">Select Items for Cats</option>
+              <option className="input" value="Cats">Cats: Select Items</option>
               <option className="input" value="catfood">Cat Food</option>
               <option className="input" value="cattoys"> Cat Toys</option>
 
             </select>
           </label>
         </div>
-        <div className='list-stuff'>
+        <div className='list-stuff' key="stuff">
           {!this.state.filterArray.length > 0 && <div className="product">{listItems}</div>}
 
           <div />

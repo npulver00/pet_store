@@ -5,7 +5,7 @@ module.exports = {
         const { token, total } = req.body;
         stripe.charges.create({
             source: token.id,
-            amount: total * 100,
+            amount: Math.round((total * 100), 2),
             currency: 'usd',
             description: 'petstore'
         },

@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { inputAddress } from "../../redux/reducer";
 import styled from 'styled-components';
 import Header from "../Header/Header";
-import { NavLink } from "react-router-dom";
 
 const AddressWrapper = styled.div`
 background-color: #DCB239;
@@ -23,19 +22,28 @@ font-size: 20px;
 color: black;
 font-weight: 500;
 margin-top: 50px;
+@media(max-width: 700px){
+  width: 61vw;
+  margin: 0 auto;
+
+}
 `;
 
 
 
 
 const Submit = styled.div`
- display: flex;
- justify-content: center;
- align-content: center;
- flex-direction: column;
- text-align: center
- font-weight: bold;
- height: 200px;
+display: flex;
+justify-content: center;
+align-content: center;
+flex-direction: column;
+text-align: center
+font-weight: bold;
+height: 200px;
+@media(max-width: 700px){
+ margin: 0 auto;
+ width: 65vw;
+}
 
 `;
 
@@ -58,25 +66,19 @@ class AddressFiles extends Component {
 
   getUsersAddresses = () => {
     axios.get('/store/addresshistory').then(response => {
-      console.log("responseGetUser", response);
       this.setState({
         addresses: response.data
       });
-      console.log("addressGet", response.data)
-      console.log("addressesAdd", this.state.addresses)
     });
 
   };
   editAddress = id => {
     const { addresses } = this.state
-    const edituserAddress = addresses.find(address => address.id == id)
-    console.log("addresses help", addresses)
-    console.log("edituserAddress", edituserAddress);
+    const edituserAddress = addresses.find(address => address.id === id)
     if (this.state.addresses.filter(address => address.primary_address).length > 1) {
       alert('You can only have one primary address!')
     } else {
-      axios.put(`/store/addresshistory/${id}`, edituserAddress).then((response) => {
-        console.log("put response.data", response);
+      axios.put(`/store/addresshistory/${id}`, edituserAddress).then(() => {
         this.getUsersAddresses();
       });
     }
@@ -93,7 +95,6 @@ class AddressFiles extends Component {
   handleNestedChange = (event, index) => {
     const newInput = [...this.state.addresses];
     newInput[index][event.target.name] = event.target.value;
-
     this.setState({
       addresses: newInput
     });
@@ -110,11 +111,7 @@ class AddressFiles extends Component {
         : this.setState({
           isHidden: true
         });
-
-
     }
-
-    // console.log("submitAddress", this.state.isHidden);
   };
 
   onClick = (id) => {
@@ -127,89 +124,76 @@ class AddressFiles extends Component {
 
   render() {
     const { addresses } = this.state;
-    console.log("this.state", this.state);
     const useraddresses = addresses.map((shipping, index) => {
-      return (
-        <AddressWrapper>
-          {this.state.isHidden ? (
-            <div className="inputAd">
-              <div>
-                <input value={shipping.name} name="name" onChange={e => {
-                  this.handleNestedChange(e, index);
-                }} />
-              </div>
-              <div>
-                <input value={shipping.address} name="address" onChange={e => {
-                  this.handleNestedChange(e, index);
-                }} />
-              </div>
-              <div>
-                <input value={shipping.city} name="city" onChange={e => {
-                  this.handleNestedChange(e, index);
-                }} />
-              </div>
-              <div>
-                <input value={shipping.state} name="state" onChange={e => {
-                  this.handleNestedChange(e, index);
-                }} />
-              </div>
-              <div>
-                <input value={shipping.zip} name="zip" onChange={e => {
-                  this.handleNestedChange(e, index);
-                }} />
-              </div>
-              <div>
-                <input value={shipping.primary_address} name="primary_address" onChange={e => {
-                  this.handleNestedChange(e, index);
-                }} />
-              </div>
+      return (<AddressWrapper>
+        {this.state.isHidden ? (
+          <div className="inputAd">
+            <div>
+              <input value={shipping.name} name="name" onChange={e => {
+                this.handleNestedChange(e, index);
+              }} />
             </div>
-          ) : (
-
-              <Submit>
-                <div className="divide">
-                  <div>{shipping.name}</div>
-                  <div>{shipping.address}</div>
-                  <div>{shipping.city}</div>
-                  <div>{shipping.state}</div>
-                  <div>{shipping.zip}</div>
-                  <div>{shipping.primary_address && 'PRIMARY ADDRESS'}</div>
-                </div>
-              </Submit>
-            )}
-          {/* <NavLink to="/cart">
-            <button className="addressbutton"
-              onClick={() => {
-                this.editAddress(shipping.id);
-              }}
-            >
-              Back to Cart
-          </button>
-
-          </NavLink> */}
-
-          <div className="editbutton">
-            <button className={this.state.isHidden ? "hide" : "edit"} onClick={this.submitAddress}> Edit Address </button>
-            <button className={this.state.isHidden ? "edit" : "hide"} onClick={() => this.onClick(shipping.id)} > Save Address </button>
+            <div>
+              <input value={shipping.address} name="address" onChange={e => {
+                this.handleNestedChange(e, index);
+              }} />
+            </div>
+            <div>
+              <input value={shipping.city} name="city" onChange={e => {
+                this.handleNestedChange(e, index);
+              }} />
+            </div>
+            <div>
+              <input value={shipping.state} name="state" onChange={e => {
+                this.handleNestedChange(e, index);
+              }} />
+            </div>
+            <div>
+              <input value={shipping.zip} name="zip" onChange={e => {
+                this.handleNestedChange(e, index);
+              }} />
+            </div>
+            <div>
+              <input value={shipping.primary_address} name="primary_address" onChange={e => {
+                this.handleNestedChange(e, index);
+              }} />
+            </div>
           </div>
+        ) : (
 
-          <button className="addressbutton"
-            onClick={() => {
-              this.deleteAddress(shipping.id);
-            }}
-          >
-            Delete
+            <Submit>
+              <div className="divide">
+                <div>{shipping.name}</div>
+                <div>{shipping.address}</div>
+                <div>{shipping.city}</div>
+                <div>{shipping.state}</div>
+                <div>{shipping.zip}</div>
+                <div>{shipping.primary_address && 'PRIMARY ADDRESS'}</div>
+              </div>
+            </Submit>
+          )}
+
+        <div className="editbutton">
+          <button className={this.state.isHidden ? "hide" : "edit"} onClick={this.submitAddress}> Edit Address </button>
+          <button className={this.state.isHidden ? "edit" : "hide"} onClick={() => this.onClick(shipping.id)} > Save Address </button>
+        </div>
+
+        <button className="addressbutton"
+          onClick={() => {
+            this.deleteAddress(shipping.id);
+          }}
+        >
+          Delete
           </button>
 
-        </AddressWrapper >
+      </AddressWrapper >
       );
     });
 
     return (
       <div>
         <div> <Header /></div>
-        <div>{this.props.user.auth0_id ? useraddresses : ""}</div>
-        {/* <input onChange={this.handleInput}/> */}
+        <div>{this.props.user.auth0_id ? useraddresses : alert("Login in please")}</div>
       </div >
     );
   }

@@ -104,28 +104,31 @@ class Navigation extends Component {
 
 
     render() {
-        console.log("toggler", this.state.toggle)
-        console.log("this.props.user!!!", this.props)
+
         return (
             <div>
                 <div className="topNav">
                     <div><Logo src={pic}></Logo></div>
                     <div className="title"><TitlePage>Stella & Toby's Pet World</TitlePage></div>
-                    <div className="user"> {this.props.user ? this.props.user.username : ""} </div>
-                    <div className="theuserpicture">
-                        <img className="userpicture" key="picture" src={this.props.user ? this.props.user.picture : ""} />
+                    <div className="centerPictureName">
+                        <div className="user"> {this.props.user ? this.props.user.username : ""} </div>
+                        <div className="theuserpicture">
+                            <img className="userpicture" alt="" src={this.props.user ? this.props.user.picture : ""} />
+                        </div>
                     </div>
 
                 </div>
                 <div className="showNavbar">
                     <div className="navbar">
                         <NavWrapper>
-                            <div><NavLink activeClassName="active" exact to="/" ><Button><i class="fas fa-home"></i></Button></NavLink></div>
+                            <div><NavLink exact to="/" ><Button><i class="fas fa-home"></i></Button></NavLink></div>
                             <div><NavLink to="/store_cart"><Button><i class="fas fa-shopping-cart"></i></Button></NavLink></div>
                         </NavWrapper>
-                        <div className="userinfo">
-                            <button className={this.props.user ? "hide" : "login"} onClick={this.login}><i class="fas fa-cat">..</i>Login</button>
-                            <button className={this.props.user ? "login" : "hide"} onClick={this.logout}><i class="fas fa-dog">..</i>Logout</button>
+                        <div className="centerPictureName">
+                            <div className="userinfo">
+                                <button className={this.props.user ? "hide" : "login"} onClick={this.login}><i class="fas fa-cat">..</i>Login</button>
+                                <button className={this.props.user ? "login" : "hide"} onClick={this.logout}><i class="fas fa-dog">..</i>Logout</button>
+                            </div>
                         </div>
                     </div>
                 </div>

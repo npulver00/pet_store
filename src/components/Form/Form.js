@@ -124,7 +124,7 @@ class Form extends Component {
         </div>
         <div>
           <div className="formBoxButton">
-            <NavLink to="/Cart">
+            <NavLink to="/store_cart">
               <button className="formbutton" onClick={() => { this.postAddress() }}>Submit</button>
             </NavLink>
           </div>
