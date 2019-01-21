@@ -97,6 +97,8 @@ h3{
     border: solid #DF744A 1px;
     background-color: #FEDCD2;
     border-radius: 3px;
+    outline: none;
+    cursor: pointer;
     
 } 
 .deleteButton{
@@ -105,9 +107,10 @@ h3{
     margin: 10px;
     background-color:#FEDCD2;
     text-align: center;
-    
     border: solid #DF744A 1px;
     border-radius: 3px;
+    outline: none;
+    cursor: pointer;
 
 }
 
@@ -130,6 +133,8 @@ h3{
 .stripebutton{
     margin: 15px;
     border-radius: 10px;
+    cursor: pointer;
+    outline: none;
 
     
 }
@@ -142,6 +147,8 @@ h3{
     background-color: #DF744A;
     text-align: center;
     box-shadow: 2px 2px 3px white;
+    outline: none;
+    cursor: pointer;
    
 }
 .cartbutton{
@@ -152,6 +159,7 @@ h3{
     margin: 0% auto;
     margin-left: 10%;
     margin-top: 10px;
+    cursor: pointer;
    
 }
 .total{
@@ -202,6 +210,9 @@ h3{
         border: solid black 2px;
         margin: 0% auto;
         margin: 2px;
+        cursor: pointer;
+        outline: none;
+       
 
          
      }
@@ -229,8 +240,10 @@ h3{
         justify-content: center;
         width: 35vw;
         font-size: 12px;
-       
         margin: 0% auto;
+        cursor: pointer;
+        outline: none;
+        
 
      }
      

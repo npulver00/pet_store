@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { inputAddress } from "../../redux/reducer";
 import styled from 'styled-components';
 import Header from "../Header/Header";
+import { withRouter } from "react-router-dom";
 
 const AddressWrapper = styled.div`
 background-color: #DCB239;
@@ -193,7 +194,7 @@ class AddressFiles extends Component {
     return (
       <div>
         <div> <Header /></div>
-        <div>{this.props.user.auth0_id ? useraddresses : alert("Login in please")}</div>
+        <div>{this.props.user ? useraddresses : this.props.history.push("/")}</div>
       </div >
     );
   }
@@ -205,7 +206,4 @@ const mapToStateToProps = state => {
   };
 };
 
-export default connect(
-  mapToStateToProps,
-  { inputAddress }
-)(AddressFiles);
+export default withRouter(connect(mapToStateToProps, { inputAddress })(AddressFiles));

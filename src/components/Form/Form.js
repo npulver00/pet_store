@@ -60,7 +60,7 @@ class Form extends Component {
             <h2>Shipping Address</h2>
             <div> Name:<input className="name"
               value={this.state.name}
-              name="name"
+              name="name" placeholder="First & Last Name"
               onChange={e => {
                 this.postInputAddress(e);
               }}
@@ -71,7 +71,7 @@ class Form extends Component {
 
                 <input className="address"
                   value={this.state.address}
-                  name="address"
+                  name="address" placeholder="Street Address"
                   onChange={e => {
                     this.postInputAddress(e);
                   }}
@@ -85,7 +85,7 @@ class Form extends Component {
                 City:{" "}
                 <input className="city"
                   value={this.state.city}
-                  name="city"
+                  name="city" placeholder="City"
                   onChange={e => {
                     this.postInputAddress(e);
                   }}
@@ -98,7 +98,7 @@ class Form extends Component {
                 State:{" "}
                 <input className="state"
                   value={this.state.state}
-                  name="state"
+                  name="state" placeholder="State"
                   onChange={e => {
                     this.postInputAddress(e);
                   }}
@@ -110,7 +110,7 @@ class Form extends Component {
                 Zip:{" "}
                 <input className="zip"
                   value={this.state.zip}
-                  name="zip"
+                  name="zip" placeholder="Zip Code"
                   onChange={e => {
                     this.postInputAddress(e);
                   }}

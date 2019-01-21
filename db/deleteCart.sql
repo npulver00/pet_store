@@ -1,15 +1,3 @@
--- delete from cart_items where user_id =$1 and product_id = $2
--- delete from cart_items where product_id = $1 
-
--- delete from cart_items where userid = $1;
--- select * from products
-
--- update cart_items set quantity = (
---  case when quantity >1
---  then(quantity - 1)
---  else 1 end 
--- ) where product_id = 2
-
 DO $$
 DECLARE
    product_idd integer := $1;

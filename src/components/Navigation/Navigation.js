@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import "./Navigation.css";
 import axios from 'axios';
 import { setUser } from "../../redux/reducer";
@@ -40,6 +40,8 @@ const Button = styled.button`
     padding-left: 30px;
     padding-right:30px;
     text-align: center;
+    outline: none;
+    cursor: pointer;
     &:hover { background-color:#DCB239;
         border: 1px dotted white;
     }
@@ -48,7 +50,6 @@ const Button = styled.button`
     @media(max-width: 700px){
         padding: 10px;  
         margin: 65px;  
-      
     }
 `;
 
@@ -86,10 +87,11 @@ class Navigation extends Component {
     }
     logout = () => {
         axios.post('/auth/logout').then(() => {
-            this.setState({
-                user: null
-            });
-            this.props.setUser(null);
+            // this.setState({
+            //     user: null
+            // });
+            this.props.setUser(null)
+            this.props.history.push("/")
         })
     }
 
@@ -160,5 +162,5 @@ const mapStateToProps = state => {
 
 }
 
-export default connect(mapStateToProps, { setUser })(Navigation);
+export default withRouter(connect(mapStateToProps, { setUser })(Navigation));
 

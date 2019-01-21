@@ -11,6 +11,8 @@ header{
 }
 .login button {
   display: flex;
+  outline: none;
+  cursor: pointer;
   
 }
 .userinfo{
@@ -35,6 +37,8 @@ header{
 .userinfo button:hover {
   background-color:#DCB239;
   border: 1px dotted white;
+  outline: none;
+  cursor: pointer;
 }
 
 .navbar {
@@ -150,25 +154,26 @@ header{
     z-index: 999;
     position: absolute;
     transform: translate(0, 0px);
-    transition: 2s;
+    transition: all 3s, ease-out 2s, ease-in 4s;
     width: 100vw;
-  
-    
    
-
-    
   }
   
   .showDropdown ul li{
     border-bottom: solid #BFD8D2 1px;
     width: 100vw;
-    height: 50px;
+    height: 30px;
     font-size: 30px;
     margin: 0 auto;
-    text-decoration: none;
     padding: 10px;
-   
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+
   }
+
+
+
 
   .showNavbar{ display: none;
 

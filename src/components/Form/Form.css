@@ -66,6 +66,8 @@
     text-align: center;
     box-shadow: 2px 2px 3px white;
     height: 30px;
+    cursor: pointer;
+    outline: none;
 
 
 }
@@ -75,8 +77,8 @@
     align-items: center;
     margin: 0% auto;
     margin-bottom: 50px;
-  
     height: 100px;
+   
 }
 
 @media screen and (max-width: 700px){
